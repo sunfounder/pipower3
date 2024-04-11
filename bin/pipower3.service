@@ -1,0 +1,14 @@
+# https://www.freedesktop.org/software/systemd/man/systemd.service.html
+[Unit]
+Description=pipower3 service
+After=multi-user.target # Need to start last to avoid gpio being occupied
+
+[Service]
+Type=forking
+# WorkingDirectory=/opt/pipower3
+ExecStart=/usr/local/bin/pipower3 start --background
+ExecStop=/usr/local/bin/pipower3 stop
+# PrivateTmp=False
+
+[Install]
+WantedBy=multi-user.target
