@@ -307,28 +307,31 @@ class SF_Installer():
                 self.set_config(name, value)
             self.need_reboot = True
 
-    def copy_dtoverlay(self):
-        # Copy device tree overlay
-        if self.dtoverlay is None or 'skip_dtoverlay' in self.args and self.args.skip_dtoverlay:
-            return
-        OVERLAY_PATH_DEFAULT = '/boot/overlays'
-        OVERLAY_PATH_BACKUP = '/boot/firmware/overlays'
-        overlays_path = OVERLAY_PATH_DEFAULT
-        if not os.path.exists(overlays_path):
-            overlays_path = OVERLAY_PATH_BACKUP
-            if not os.path.exists(overlays_path):
-                self.errors.append(f"Device tree overlay directory {OVERLAY_PATH_DEFAULT} or {OVERLAY_PATH_BACKUP} not found")
-                return
-        
+    def copy_dtoverlay_to(self, dir):
         if isinstance(self.dtoverlay, str):
             self.dtoverlay = [self.dtoverlay]
         for overlay in self.dtoverlay:
             if not os.path.exists(overlay):
                 self.errors.append(f"Device tree overlay file {overlay} not found")
                 continue
-            self.do(f'Copy dtoverlay {overlay}', f'cp {overlay} {overlays_path}/')
-
+            self.do(f'Copy dtoverlay {overlay}', f'cp {overlay} {dir}/')
         self.need_reboot = True
+
+    def copy_dtoverlay(self):
+        # Copy device tree overlay
+        if self.dtoverlay is None or 'skip_dtoverlay' in self.args and self.args.skip_dtoverlay:
+            return
+        OVERLAY_PATH_DEFAULT = '/boot/overlays'
+        OVERLAY_PATH_BACKUP = '/boot/firmware/overlays'
+        success = False
+        if os.path.exists(OVERLAY_PATH_DEFAULT):
+            self.copy_dtoverlay_to(OVERLAY_PATH_DEFAULT)
+            success = True
+        if os.path.exists(OVERLAY_PATH_BACKUP):
+            self.copy_dtoverlay_to(OVERLAY_PATH_BACKUP)
+            success = True
+        if not success:
+            self.errors.append(f"Device tree overlay directory {OVERLAY_PATH_DEFAULT} or {OVERLAY_PATH_BACKUP} not found")
 
     def reboot_prompt(self):
         print("\033[1;32mWhether to restart for the changes to take effect(Y/N): \033[0m", end='')
