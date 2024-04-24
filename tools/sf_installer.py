@@ -243,20 +243,6 @@ class SF_Installer():
                 f"{msg} error:\n  Command: {cmd}\n  Status: {status}\n  Result: {result}\n  Error: {error}"
             )
 
-    # def install_python_source(self, name, url='./'):
-    #     print(f'Installing {name}...')
-    #     if url.startswith("http"):
-    #         self.do(f'Clone package', f'git clone {url}')
-    #         subdir = url.split('/')[-1].replace('.git', "")
-    #     else:
-    #         subdir = url
-    #     self.do(f'Build package',
-    #             f'cd {subdir} && {self.venv_python} -m build')
-    #     self.do(f'Uninstall old package',
-    #             f'{self.venv_pip} uninstall -y {name}')
-    #     self.do(f'Install package',
-    #             f'cd {subdir}/dist && {self.venv_pip} install *.whl')
-
     def install_python_source(self, name, url='./'):
         print(f'Installing {name}...')
         self.do(f'Uninstall old package',
@@ -325,8 +311,8 @@ class SF_Installer():
         # Copy device tree overlay
         if self.dtoverlay is None or 'skip_dtoverlay' in self.args and self.args.skip_dtoverlay:
             return
-        OVERLAY_PATH_DEFAULT = '/boot/overlays'
-        OVERLAY_PATH_BACKUP = '/boot/firmware/overlays'
+        OVERLAY_PATH_DEFAULT = '/boot/firmware/overlays'
+        OVERLAY_PATH_BACKUP = '/boot/overlays'
         overlays_path = OVERLAY_PATH_DEFAULT
         if not os.path.exists(overlays_path):
             overlays_path = OVERLAY_PATH_BACKUP
