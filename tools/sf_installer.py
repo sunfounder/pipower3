@@ -311,8 +311,8 @@ class SF_Installer():
         # Copy device tree overlay
         if self.dtoverlay is None or 'skip_dtoverlay' in self.args and self.args.skip_dtoverlay:
             return
-        OVERLAY_PATH_DEFAULT = '/boot/firmware/overlays'
-        OVERLAY_PATH_BACKUP = '/boot/overlays'
+        OVERLAY_PATH_DEFAULT = '/boot/overlays'
+        OVERLAY_PATH_BACKUP = '/boot/firmware/overlays'
         overlays_path = OVERLAY_PATH_DEFAULT
         if not os.path.exists(overlays_path):
             overlays_path = OVERLAY_PATH_BACKUP
