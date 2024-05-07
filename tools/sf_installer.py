@@ -201,8 +201,8 @@ class SF_Installer():
                              stderr=subprocess.PIPE,
                              universal_newlines=True)
         p.wait()
-        result = p.stdout.read(errors='ignore')
-        error = p.stderr.read(errors='ignore')
+        result = p.stdout.read()
+        error = p.stderr.read()
         status = p.poll()
         return status, result, error
 
