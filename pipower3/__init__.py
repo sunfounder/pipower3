@@ -15,12 +15,10 @@ def main():
     parser.add_argument('-bp', '--battery-percentage', action='store_true', help='Read battery percentage')
     parser.add_argument('-bs', '--battery-source', action='store_true', help='Read battery source')
     parser.add_argument('-ii', '--is-input-plugged_in', action='store_true', help='Read is input plugged in')
-    parser.add_argument('-ib', '--is-battery-plugged_in', action='store_true', help='Read is battery plugged in')
     parser.add_argument('-ic', '--is-charging', action='store_true', help='Read is charging')
-    parser.add_argument('-ao', '--always-on', action='store_true', help='Read always on')
+    parser.add_argument('-do', '--default-on', action='store_true', help='Read default on')
     parser.add_argument('-sr', '--shutdown-request', action='store_true', help='Read shutdown request')
     parser.add_argument('-bi', '--board-id', action='store_true', help='Read board id')
-    parser.add_argument('-psv', '--power_source-voltage', action='store_true', help='Read power source voltage')
     parser.add_argument('-a', '--all', action='store_true', help='All')
 
     args = parser.parse_args()
@@ -32,11 +30,11 @@ def main():
         log = Logger('pipower3')
         log.info('Starting PiPower 3 service')
         last_shutdown_request = None
-        last_is_usb_plugged_in = None
+        last_is_input_plugged_in = None
         last_is_charging = None
         while True:
             shutdown_request = spc.read_shutdown_request()
-            is_usb_plugged_in = spc.read_is_input_plugged_in()
+            is_input_plugged_in = spc.read_is_input_plugged_in()
             is_charging = spc.read_is_charging()
             if shutdown_request != last_shutdown_request:
                 if shutdown_request == spc.SHUTDOWN_REQUEST_NONE:
@@ -48,12 +46,12 @@ def main():
                     log.info("Shutdown request: Low battery")
                     os.system("sudo shutdown -h now")
                 last_shutdown_request = shutdown_request
-            if is_usb_plugged_in != last_is_usb_plugged_in:
-                if is_usb_plugged_in:
-                    log.info("USB plugged in")
+            if is_input_plugged_in != last_is_input_plugged_in:
+                if is_input_plugged_in:
+                    log.info("Input plugged in")
                 else:
-                    log.info("USB unplugged")
-                last_is_usb_plugged_in = is_usb_plugged_in
+                    log.info("Input unplugged")
+                last_is_input_plugged_in = is_input_plugged_in
             if is_charging != last_is_charging:
                 if is_charging:
                     log.info("Charging")
@@ -109,12 +107,10 @@ def main():
         print(f"Power source: {power_source} ({'Battery' if power_source == spc.BATTERY else 'External'})")
     if args.is_input_plugged_in:
         print(f"Input plugged in: {spc.read_is_input_plugged_in()}")
-    if args.is_battery_plugged_in:
-        print(f"Battery plugged in: {spc.read_is_battery_plugged_in()}")
     if args.is_charging:
         print(f"Charging: {spc.read_is_charging()}")
-    if args.always_on:
-        print(f"Always on: {spc.read_always_on()}")
+    if args.default_on:
+        print(f"Default on: {spc.read_default_on()}")
     if args.shutdown_request:
         shutdown_request = spc.read_shutdown_request()
         shutdown_request_str = 'None'
@@ -129,17 +125,14 @@ def main():
         print(f"Shutdown request: {shutdown_request} - {shutdown_request_str}")
     if args.board_id:
         print(f"Board id: {spc.read_board_id()}")
-    if args.power_source_voltage:
-        print(f"Power source voltage: {spc.read_power_source_voltage()} mV")
     if args.all:
         data_buffer = spc.read_all()
         print(f"Input voltage: {data_buffer['input_voltage']} mV")
-        print(f"Raspberry Pi voltage: {data_buffer['output_voltage']} mV")
+        print(f"Output voltage: {data_buffer['output_voltage']} mV")
         print(f"Battery voltage: {data_buffer['battery_voltage']} mV")
         print(f"Battery percentage: {data_buffer['battery_percentage']} %")
         print(f"Power source: {data_buffer['power_source']} - {'Battery' if data_buffer['power_source'] == spc.BATTERY else 'External'}")
         print(f"Input plugged in: {data_buffer['is_input_plugged_in']}")
-        print(f"Battery plugged in: {data_buffer['is_battery_plugged_in']}")
         print(f"Charging: {data_buffer['is_charging']}")
         print('')
         print(f"Internal data:")
@@ -154,7 +147,6 @@ def main():
             shutdown_request_str = 'Unknown'
         print(f"Shutdown request: {data_buffer['shutdown_request']} - {shutdown_request_str}")
         print(f'Board id: {spc.read_board_id()}')
-        print(f"Always on: {spc.read_always_on()}")
-        print(f"Power source voltage: {spc.read_power_source_voltage()} mV")
+        print(f"Default on: {spc.read_default_on()}")
         print(f"Shutdown percentage: {spc.read_shutdown_percentage()} %")
         print(f"Power off percentage: {spc.read_power_off_percentage()} %")
