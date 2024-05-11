@@ -8,7 +8,6 @@ def main():
     parser = argparse.ArgumentParser(description='PiPower 3')
     parser.add_argument('command', nargs='?', help='Command')
     parser.add_argument('-sp', '--shutdown-percentage', nargs='?', default='', help='Set shutdown percentage, leave empty to read')
-    parser.add_argument('-pp', '--power-off-percentage', nargs='?', default='', help='Set power off percentage, leave empty to read')
     parser.add_argument('-iv', '--input-voltage', action='store_true', help='Read input voltage')
     parser.add_argument('-ov', '--output-voltage', action='store_true', help='Read output voltage')
     parser.add_argument('-bv', '--battery-voltage', action='store_true', help='Read battery voltage')
@@ -81,19 +80,6 @@ def main():
                 time.sleep(0.5)
                 if spc.read_shutdown_percentage() == int(args.shutdown_percentage):
                     print(f"Success, shutdown battery percentage: {spc.read_shutdown_percentage()}%")
-    if args.power_off_percentage != '':
-        if args.power_off_percentage == None:
-            print(f"Power off battery percentage: {spc.read_power_off_percentage()}%")
-        else:
-            if int(args.power_off_percentage) < 5:
-                print("Failed, power off battery percentage minimal is 5%")
-            elif int(args.power_off_percentage) > 100:
-                print("Failed, power off battery percentage maximal is 100%")
-            else:
-                spc.write_power_off_percentage(int(args.power_off_percentage))
-                time.sleep(0.5)
-                if spc.read_power_off_percentage() == int(args.power_off_percentage):
-                    print(f"Success, power off battery percentage: {spc.read_power_off_percentage()}%")
     if args.input_voltage:
         print(f"Input voltage: {spc.read_input_voltage()} mV")
     if args.output_voltage:
@@ -149,4 +135,3 @@ def main():
         print(f'Board id: {spc.read_board_id()}')
         print(f"Default on: {spc.read_default_on()}")
         print(f"Shutdown percentage: {spc.read_shutdown_percentage()} %")
-        print(f"Power off percentage: {spc.read_power_off_percentage()} %")

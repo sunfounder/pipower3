@@ -34,7 +34,6 @@ def main():
         print(f'Board id: {spc.read_board_id()}')
         print(f"read_always_on on: {spc.read_default_on()}")
         print(f"Shutdown percentage: {spc.read_shutdown_percentage()} %")
-        print(f"Power off percentage: {spc.read_power_off_percentage()} %")
 
         print('')
         time.sleep(1)
