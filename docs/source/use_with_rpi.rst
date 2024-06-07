@@ -2,7 +2,7 @@ Use with Raspberry Pi
 ========================
 
 Download and Install the ``pipower3`` Module
--------------------------------
+----------------------------------------------------
 
 Download the code from GitHub and install:
 

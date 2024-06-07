@@ -71,33 +71,33 @@ Pinout
 4. :ref:`cap_btn`: External power button jumper, used for external power button.
 5. **PWR LED**: Output status LED, lights up when output is activated.
 6. **BAT LED**: Indicates whether the battery is currently powering externally. If the LED is on, the battery is in use; monitor battery consumption.
-7. :ref:`power_switch`: 
+7. :ref:`power_button`: Onboard power button for controlling the board's power:
 
-  * **Single click**: activates output; 
-  * **Hold for 2 seconds then release**: sends shutdown request via i2c; 
-  * **Hold for 5 seconds**: directly turns off output.
+  * **Single press**: Activates output.
+  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
+  * **Continue holding for more than 5 seconds**: Directly turns off output.
 
-8. :ref:`battery_indicators`: Indicates battery level and charging status. Note, if charging during shutdown, the indicator light will still display the charging status until charging is complete.
+8. :ref:`battery_indicators`: Indicates battery level and charging status.
 9. **I2C Connector**: SH1.0 4P terminal, compatible with **qwIIC** and **STEMMA QT**.
 10. **I2C Pin Headers**: 1x4P 2.54 pin headers.
 11. **Type A Output**: 5V output interface.
 12. **5V/GND Pin Headers**: 2 x 4P 2.54 pin headers.
-13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C and power, see Raspberry Pi pin diagram. Headers can be used to stack HATs, but note that I2C and pin 26 are connected.
+13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi.
 14. :ref:`battery_connector`: XH2.54 3P battery connector.
 15. **Warning LEDs**: If the battery is reversed, two red LEDs light up, warning of battery reversal.
 
-.. _power_switch:
+.. _power_button:
 
-Power Switch
+Power Button
 ----------------
 
 .. image:: img/power_button.jpg
   :width: 500
   :align: center
 
-Onboard power switch for controlling the board's power:
+Onboard power button for controlling the board's power:
 
-* **Single click**: Activates output.
+* **Single press**: Activates output.
 * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
 * **Continue holding for more than 5 seconds**: Directly turns off output.
 
@@ -106,7 +106,7 @@ Onboard power switch for controlling the board's power:
 Battery Indicators
 --------------------------------
 
-Four onboard LEDs indicate battery level:
+Four onboard LEDs indicate battery level and charging status. Note, if charging during shutdown, the indicator light will still display the charging status until charging is complete.
 
 .. image:: img/battery_indicator.jpg
   :width: 500
@@ -251,7 +251,7 @@ SDSIG
   :width: 500
   :align: center
 
-**SDSIG** is the shutdown signal pin. Pulling this pin high indicates the host is shut down and needs to be powered off. Pulling it low indicates the host is powered on. If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND. If using a Raspberry Pi, connect the jumper cap to pin 26, install PiPower 3 software on the Raspberry Pi, and when the Raspberry Pi shuts down, it will pull this pin high, signaling PiPower 3 to power off.
+**SDSIG** is the shutdown signal pin. Pulling this pin high indicates the host is shut down and needs to be powered off. Pulling it low indicates the host is powered on. If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND. If using a Raspberry Pi, connect the jumper cap to pin 26, install ``pipower3`` software on the Raspberry Pi, and when the Raspberry Pi shuts down, it will pull this pin high, signaling PiPower 3 to power off.
 
 .. _pin_header:
 
