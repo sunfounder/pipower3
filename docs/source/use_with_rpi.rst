@@ -1,10 +1,24 @@
-Use with Raspberry Pi
-========================
+.. note::
 
-Download and Install the ``pipower3`` Module
-----------------------------------------------------
+    Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
-Download the code from GitHub and install:
+    **Warum beitreten?**
+
+    - **Expertenunterstützung**: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.
+    - **Lernen & Teilen**: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.
+    - **Exklusive Vorschauen**: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.
+    - **Spezialrabatte**: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.
+    - **Festliche Aktionen und Gewinnspiele**: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.
+
+    👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
+
+Verwendung mit Raspberry Pi
+================================
+
+Herunterladen und Installieren des ``pipower3`` Moduls
+--------------------------------------------------------------
+
+Laden Sie den Code von GitHub herunter und installieren Sie ihn:
 
 .. code-block:: shell
     
@@ -13,29 +27,29 @@ Download the code from GitHub and install:
     cd pipower3
     sudo python3 install.py
 
-After installation, you will be prompted to reboot. Enter ``Y`` and press enter to reboot. After rebooting, the safe shutdown service will automatically start. If the button is pressed for 2 seconds or if the battery is low, the Raspberry Pi will shut down and notify PiPower 3 to power off.
+Nach der Installation werden Sie aufgefordert, neu zu starten. Geben Sie ``Y`` ein und drücken Sie die Eingabetaste, um neu zu starten. Nach dem Neustart wird der sichere Abschaltdienst automatisch gestartet. Wenn der Knopf 2 Sekunden lang gedrückt wird oder der Akku schwach ist, fährt der Raspberry Pi herunter und benachrichtigt PiPower 3, sich auszuschalten.
 
-Set Shutdown Percentage
+Abschaltprozentsatz festlegen
 --------------------------------
 
-PiPower 3 sends a "LOW BATTERY" shutdown request through I2C to the host when there is no external power and the battery voltage drops below the shutdown percentage. The host can read the shutdown request signal through I2C, and if "LOW BATTERY" is detected, it can process the shutdown. 
+PiPower 3 sendet einen "LOW BATTERY" Abschaltbefehl über I2C an den Host, wenn keine externe Stromversorgung vorhanden ist und die Batteriespannung unter den Abschaltprozentsatz fällt. Der Host kann das Abschaltsignal über I2C lesen und bei Erkennung von "LOW BATTERY" den Shutdown-Prozess einleiten. 
 
-After shutting down, pulling the ``SDSIG`` high will power off the PiPower. This implements the low battery shutdown feature of PiPower 3.
+Nach dem Herunterfahren wird das ``SDSIG`` hochgezogen und der PiPower wird ausgeschaltet. Dies implementiert die Niedrigbatterie-Abschaltfunktion von PiPower 3.
 
 .. note::
 
-    If you are use Raspberry Pi 5, if the power used is greater than 3A, the battery will not be able to sustain power for long. It is recommended to set the shutdown Percentage to 100%, i.e., notify the Raspberry Pi to shut down immediately when external power is disconnected, to protect the Raspberry Pi and data.
+    Wenn Sie den Raspberry Pi 5 verwenden und der Stromverbrauch größer als 3A ist, kann der Akku die Stromversorgung nicht lange aufrechterhalten. Es wird empfohlen, den Abschaltprozentsatz auf 100% zu setzen, d.h., den Raspberry Pi sofort herunterzufahren, wenn die externe Stromversorgung getrennt wird, um den Raspberry Pi und die Daten zu schützen.
 
-You can set the shutdown percentage using the command, for example, set it to 30%. When the battery level is below 30%, PiPower3 will power off the Raspberry Pi after it shuts down.
+Sie können den Abschaltprozentsatz mit dem folgenden Befehl festlegen, z.B. auf 30%. Wenn der Akkustand unter 30% fällt, schaltet PiPower3 den Raspberry Pi nach dem Herunterfahren aus.
 
 .. code-block:: shell
     
     pipower3 -sp 30 
 
-View the Basic Configurations
+Grundkonfigurationen anzeigen
 ----------------------------------------
 
-You can use the ``pipower3`` command to view the current information, detailed usage tutorial as follows:
+Sie können den Befehl ``pipower3`` verwenden, um die aktuellen Informationen anzuzeigen. Eine detaillierte Anleitung zur Verwendung finden Sie unten:
 
 .. code-block::
 
@@ -46,51 +60,51 @@ You can use the ``pipower3`` command to view the current information, detailed u
     PiPower 3
 
     positional arguments:
-    command               Command
+    command               Befehl
 
     options:
-    -h, --help            show this help message and exit
+    -h, --help            Zeige diese Hilfe an und beende
     -sp [SHUTDOWN_PERCENTAGE], --shutdown-percentage [SHUTDOWN_PERCENTAGE]
-                            Set shutdown percentage, leave empty to read
-    -iv, --input-voltage  Read input voltage
+                            Abschaltprozentsatz festlegen, leer lassen zum Lesen
+    -iv, --input-voltage  Eingangsspannung lesen
     -ov, --output-voltage
-                            Read output voltage
+                            Ausgangsspannung lesen
     -bv, --battery-voltage
-                            Read battery voltage
+                            Batteriespannung lesen
     -bp, --battery-percentage
-                            Read battery percentage
+                            Akkustand in Prozent lesen
     -bs, --battery-source
-                            Read battery source
+                            Batteriequelle lesen
     -ii, --is-input-plugged_in
-                            Read is input plugged in
-    -ic, --is-charging    Read is charging
-    -do, --default-on     Read default on
+                            Eingangsstatus lesen
+    -ic, --is-charging    Ladestatus lesen
+    -do, --default-on     Standardstatus lesen
     -sr, --shutdown-request
-                            Read shutdown request
-    -a, --all             All
-
-Configure with Python
+                            Abschaltanforderung lesen
+    -a, --all             Alles
+    
+Konfiguration mit Python
 -------------------------------
 
-PiPower 3 uses the ``spc`` library, which allows you to get data and set parameters in Python. The ``spc`` library is installed in a virtual environment, so you need to first enter the virtual environment.
+PiPower 3 verwendet die Bibliothek ``spc``, die es ermöglicht, Daten abzurufen und Parameter in Python zu setzen. Die Bibliothek ``spc`` ist in einer virtuellen Umgebung installiert, daher müssen Sie zuerst die virtuelle Umgebung betreten.
 
 .. code-block:: shell
 
     source /opt/pipower3/venv/bin/activate
 
-If you do not want to enter the virtual environment, you can reinstall ``spc`` to the system, which needs to be confirmed with ``--break-system`` due to possible conflicts with other libraries:
+Wenn Sie die virtuelle Umgebung nicht betreten möchten, können Sie ``spc`` erneut im System installieren, was mit ``--break-system`` bestätigt werden muss, da es zu Konflikten mit anderen Bibliotheken kommen kann:
 
 .. code-block:: shell
 
     sudo pip3 install --break-system git+http://github.com/sunfounder/spc.git
 
-Or if you want to install it in your own virtual environment, simply run the install command after entering your virtual environment:
+Oder wenn Sie es in Ihrer eigenen virtuellen Umgebung installieren möchten, führen Sie einfach den Installationsbefehl nach dem Betreten Ihrer virtuellen Umgebung aus:
 
 .. code-block:: shell
 
     pip3 install git+http://github.com/sunfounder/spc.git
 
-Now you can run examples:
+Jetzt können Sie Beispiele ausführen:
 
 .. code-block:: shell
 
@@ -100,12 +114,11 @@ Now you can run examples:
 
     python3 read_all.py
 
-* ``read_all.py``: Use this example if you need to read all data at once and process them individually.
-* ``read_individual.py``: If you only need to read certain data, this example provides individual data retrieval instructions.
-* ``set_shutdown_percentage.py``: This example teaches how to set a Shutdown battery percentage, which sends a shutdown signal to the host when there is no charging and the battery falls below this value. After the host shuts down, it receives a power-off signal before powering off. Typically used with SBCs like Raspberry Pi. Microcontrollers needing to use this feature should remove the SDSIG jumper cap and connect the middle wire to a pin. After receiving the shutdown signal and safely shutting down, pull this pin high to power off PiPower 3.
-* ``shutdown_when_request``: This example shows how to handle operations after receiving a shutdown signal. Remove the SDSIG jumper cap and connect the middle wire to a pin.
+* ``read_all.py``: Verwenden Sie dieses Beispiel, wenn Sie alle Daten auf einmal lesen und einzeln verarbeiten möchten.
+* ``read_individual.py``: Wenn Sie nur bestimmte Daten lesen möchten, bietet dieses Beispiel Anweisungen zur individuellen Datenerfassung.
+* ``set_shutdown_percentage.py``: Dieses Beispiel zeigt, wie Sie einen Abschaltprozentsatz festlegen, der ein Abschaltsignal an den Host sendet, wenn keine Ladung vorhanden ist und die Batterie unter diesen Wert fällt. Nachdem der Host heruntergefahren ist, empfängt er ein Abschaltsignal, bevor er sich ausschaltet. Typischerweise verwendet bei SBCs wie Raspberry Pi. Mikrocontroller, die diese Funktion nutzen möchten, sollten den SDSIG-Jumper entfernen und das mittlere Kabel an einen Pin anschließen. Nach Empfang des Abschaltsignals und sicherem Herunterfahren wird dieser Pin auf high gezogen, um PiPower 3 auszuschalten.
+* ``shutdown_when_request``: Dieses Beispiel zeigt, wie Sie Vorgänge nach Erhalt eines Abschaltsignals handhaben. Entfernen Sie den SDSIG-Jumper und verbinden Sie das mittlere Kabel mit einem Pin.
 
-Python Library API Documentation:
+Python-Bibliothek API-Dokumentation:
 
 https://github.com/sunfounder/spc?tab=readme-ov-file#api
-

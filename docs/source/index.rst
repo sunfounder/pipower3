@@ -1,43 +1,57 @@
-SunFounder PiPower 3 - Protect Your Device & Data
+.. note::
+
+    Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
+
+    **Warum beitreten?**
+
+    - **Expertenunterstützung**: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.
+    - **Lernen & Teilen**: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.
+    - **Exklusive Vorschauen**: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.
+    - **Spezialrabatte**: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.
+    - **Festliche Aktionen und Gewinnspiele**: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.
+
+    👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
+
+SunFounder PiPower 3 - Schützen Sie Ihr Gerät & Ihre Daten
 ================================================================================
 
-Thank you for choosing our PiPower 3.
+Vielen Dank, dass Sie sich für unser PiPower 3 entschieden haben.
 
 .. note::
-    This document is available in the following languages.
+    Dieses Dokument ist in folgenden Sprachen verfügbar.
 
         * |link_german_tutorials|
         * |link_jp_tutorials|
         * |link_en_tutorials|
     
-    Please click on the respective links to access the document in your preferred language.
+    Bitte klicken Sie auf die jeweiligen Links, um das Dokument in Ihrer bevorzugten Sprache zu lesen.
 
 .. image:: img/pipower3_picture.jpg
     :width: 400
     :align: center
 
 
-PiPower 3 is a comprehensive UPS solution, featuring power path management, charging and discharging for dual lithium batteries, protection against reverse polarity, overcharging, and deep discharge. 
+PiPower 3 ist eine umfassende UPS-Lösung mit Strompfad-Management, Lade- und Entladefunktion für zwei Lithiumbatterien sowie Schutz vor Verpolung, Überladung und Tiefentladung.
 
-It delivers a robust output of 5V/5A and is configured with HAT+ to ensure perfect compatibility with Raspberry Pi 5. Additional features include a USB Type-A output and a 2x4P header for power output, making it also suitable for other SBCs, as well as for Arduino and Pico, ESP32 platforms. 
+Es liefert eine robuste Ausgabe von 5V/5A und ist mit HAT+ konfiguriert, um eine perfekte Kompatibilität mit dem Raspberry Pi 5 zu gewährleisten. Zu den weiteren Funktionen gehören ein USB-Typ-A-Ausgang und ein 2x4P-Header für den Stromausgang, wodurch es auch für andere Einplatinencomputer, sowie für Arduino- und Pico-, ESP32-Plattformen geeignet ist.
 
-An onboard microcontroller manages power on and off, and through I2C communication, it can monitor input voltage, output voltage, battery voltage, battery level, whether external power is connected, charging status, and whether power is supplied by the battery or USB.
+Ein eingebauter Mikrocontroller verwaltet das Ein- und Ausschalten der Stromversorgung und kann über die I2C-Kommunikation die Eingangsspannung, Ausgangsspannung, Batteriespannung, den Batteriestand, ob externe Stromversorgung angeschlossen ist, den Ladezustand und ob die Stromversorgung über die Batterie oder USB erfolgt, überwachen.
 
-The PiPower 3 ensures your projects stay powered with state-of-the-art battery management and versatile compatibility, making it an essential tool for any tech enthusiast looking to enhance their hardware setup.
+Das PiPower 3 stellt sicher, dass Ihre Projekte mit modernster Batterieverwaltung und vielseitiger Kompatibilität betrieben werden, und macht es zu einem unverzichtbaren Werkzeug für jeden Technikbegeisterten, der seine Hardware-Ausstattung verbessern möchte.
 
-**Features**
+**Merkmale**
 
-* **Input**: 5V/5A, USB Type-C with PD support
-* **Output**: 5V/5A, compatible with Raspberry Pi GPIO, USB Type-A, and a 2x4P 2.54 header
-* **Charging Power**: 7.4V/1A
-* **Battery Specs**: 7.4V 2 Cell 18650 Li-ion, XH2.54 3P connector
-* Default On jumper cap, external button extension header, shutdown signal jumper
-* Onboard indicators for battery level, input source, power status, reverse polarity, and output power
-* Onboard 32-bit RISC-V microcontroller, supporting I2C communication
-* **I2C communication interfaces**: Raspberry Pi GPIO, SH1.0 4P (compatible with Qwiic, STEMMA QT), and 1x4P 2.54 header
+* **Eingang**: 5V/5A, USB Typ-C mit PD-Unterstützung
+* **Ausgang**: 5V/5A, kompatibel mit Raspberry Pi GPIO, USB Typ-A und einem 2x4P 2.54 Header
+* **Ladeleistung**: 7.4V/1A
+* **Batteriespezifikationen**: 7.4V 2-Zellen 18650 Li-ion, XH2.54 3P Stecker
+* Standard-On-Jumper-Kappe, externer Taster-Anschlussheader, Abschaltsignal-Jumper
+* Onboard-Anzeigen für Batteriestand, Eingangsstromquelle, Stromstatus, Verpolung und Ausgangsleistung
+* Onboard 32-Bit RISC-V Mikrocontroller, unterstützt I2C-Kommunikation
+* **I2C-Kommunikationsschnittstellen**: Raspberry Pi GPIO, SH1.0 4P (kompatibel mit Qwiic, STEMMA QT) und 1x4P 2.54 Header
 
 
-**Contents**
+**Inhalt**
 
 .. toctree::
     :maxdepth: 2
@@ -50,7 +64,6 @@ The PiPower 3 ensures your projects stay powered with state-of-the-art battery m
     fan
 
 
-**Copyright Notice**
+**Urheberrechtshinweis**
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
-
+Alle Inhalte, einschließlich Texte, Bilder und Code in diesem Handbuch, sind Eigentum der SunFounder Company. Sie dürfen diese nur für persönliche Studien, Untersuchungen, zur Unterhaltung oder für andere nicht kommerzielle oder gemeinnützige Zwecke gemäß den einschlägigen Vorschriften und Urheberrechtsgesetzen verwenden, ohne die gesetzlichen Rechte des Autors und der entsprechenden Rechteinhaber zu verletzen. Für jede Person oder Organisation, die diese ohne Erlaubnis für kommerzielle Zwecke nutzt, behält sich das Unternehmen das Recht vor, rechtliche Schritte einzuleiten.

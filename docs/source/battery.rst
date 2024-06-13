@@ -1,21 +1,35 @@
-18650 Battery
+.. note::
+
+    Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
+
+    **Warum beitreten?**
+
+    - **Expertenunterstützung**: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.
+    - **Lernen & Teilen**: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.
+    - **Exklusive Vorschauen**: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.
+    - **Spezialrabatte**: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.
+    - **Festliche Aktionen und Gewinnspiele**: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.
+
+    👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
+
+18650 Batterie
 =================
 
 .. image:: img/3pin_battery.jpg
     :width: 400
     :align: center
 
-* **VCC**: Battery positive terminal, here there are two sets of VCC and GND is to increase the current and reduce the resistance.
-* **Middle**: To balance the voltage between the two cells and thus protect the battery.
-* **GND**: Negative battery terminal.
+* **VCC**: Positiver Batteriepol, hier gibt es zwei Sätze von VCC und GND, um den Strom zu erhöhen und den Widerstand zu verringern.
+* **Middle**: Zum Ausgleich der Spannung zwischen den beiden Zellen und zum Schutz der Batterie.
+* **GND**: Negativer Batteriepol.
 
-This is a custom battery pack made by SunFounder consisting of two 18650 batteries with a capacity of 2000mAh. The connector is XH2.54 3P, which can be charged directly after being inserted into the shield.
+Dies ist ein maßgeschneidertes Batteriepaket von SunFounder, bestehend aus zwei 18650-Batterien mit einer Kapazität von 2000mAh. Der Anschluss ist ein XH2.54 3P, der direkt nach dem Einstecken in das Shield geladen werden kann.
 
-**Features**
+**Eigenschaften**
 
-* Battery charge: 5V/2A
-* Battery output: 5V/5A
-* Battery capacity: 3.7V 2000mAh x 2
-* Battery life: 90min
-* Battery charge time: 130min
-* Connector: XH2.54 3P
+* Batterieladung: 5V/2A
+* Batterieausgang: 5V/5A
+* Batteriekapazität: 3,7V 2000mAh x 2
+* Batterielebensdauer: 90min
+* Batterieladezeit: 130min
+* Anschluss: XH2.54 3P

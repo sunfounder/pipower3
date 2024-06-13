@@ -1,7 +1,21 @@
-Hardware Introduction
+.. note::
+
+    Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
+
+    **Warum beitreten?**
+
+    - **Expertenunterstützung**: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.
+    - **Lernen & Teilen**: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.
+    - **Exklusive Vorschauen**: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.
+    - **Spezialrabatte**: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.
+    - **Festliche Aktionen und Gewinnspiele**: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.
+
+    👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
+
+Hardware Einführung
 ========================
 
-Specification Table
+Spezifikationstabelle
 -----------------------------
 
 .. list-table:: 
@@ -9,143 +23,143 @@ Specification Table
 
    * - Parameter
      - Min
-     - Typical
+     - Typisch
      - Max
-     - Unit
-   * - Battery Shutdown Current
+     - Einheit
+   * - Abschaltstrom der Batterie
      - \-
      - \-
      - 60
      - uA
-   * - Battery Quiescent Current
+   * - Ruhestrom der Batterie
      - \-
      - 25
      - \-
      - mA
-   * - DC-DC Output Voltage
-     - 5.1957
-     - 5.2855
-     - 5.3766
+   * - DC-DC Ausgangsspannung
+     - 5,1957
+     - 5,2855
+     - 5,3766
      - V
-   * - DC-DC Over Temperature Protection
+   * - Übertemperaturschutz DC-DC
      - \-
      - 150
      - \-
      - ℃
-   * - Battery Charging Current
+   * - Ladestrom der Batterie
      - \-
      - \-
      - 1
      - A
-   * - Charging Over Temperature Protection
+   * - Übertemperaturschutz beim Laden
      - \-
      - 135
      - \-
      - ℃
-   * - Input Low Voltage Switching Threshold
-     - 4.54
-     - 4.63
-     - 4.72
+   * - Eingangsschwelle für Niederspannungsschaltung
+     - 4,54
+     - 4,63
+     - 4,72
      - V
-   * - Balancing Current
+   * - Ausgleichsstrom
      - \-
      - 40
      - \-
      - mA
-   * - Balancing Activation Voltage
+   * - Aktivierungsspannung des Ausgleichs
      - \-
-     - 4.1
+     - 4,1
      - \-
      - V
 
-Overview Diagram
--------------------
+Übersichtsdiagramm
+---------------------
 
 .. image:: img/pipower3_pinout.png
   :width: 800
   :align: center
 
-1. :ref:`power_input`: External power input, can directly power Raspberry Pi while charging the battery.
-2. :ref:`cap_onoff`: Select whether to automatically start when the external power input is plugged in during the shutdown state.
-3. :ref:`cap_sdsig`: Shutdown signal, connecting pin 26 to the middle pin with a jumper cap connects **SDSIG** to GPIO26 on the Raspberry Pi. Once configured, if the Raspberry Pi shuts down, GPIO26 goes high, signaling PiPower 3 to power off.
-4. :ref:`cap_btn`: External power button jumper, used for external power button.
-5. **PWR LED**: Output status LED, lights up when output is activated.
-6. **BAT LED**: The LED lighting up indicates that the battery is currently supplying power. At this time, you need to monitor the battery level to prevent damage due to over-discharge.
-7. :ref:`power_button`: Onboard power button for controlling the board's power:
+1. :ref:`power_input`: Externer Stromeingang, kann den Raspberry Pi direkt mit Strom versorgen und gleichzeitig die Batterie laden.
+2. :ref:`cap_onoff`: Wählen Sie, ob das Gerät automatisch starten soll, wenn der externe Stromeingang im ausgeschalteten Zustand eingesteckt wird.
+3. :ref:`cap_sdsig`: Abschaltsignal, der Anschluss von Pin 26 an den mittleren Pin mit einer Jumperkappe verbindet **SDSIG** mit GPIO26 auf dem Raspberry Pi. Sobald konfiguriert, wenn der Raspberry Pi herunterfährt, wird GPIO26 hoch und signalisiert PiPower 3, das Gerät auszuschalten.
+4. :ref:`cap_btn`: Externer Netzschalter-Jumper, wird für den externen Netzschalter verwendet.
+5. **PWR LED**: Ausgangsstatus-LED, leuchtet, wenn der Ausgang aktiviert ist.
+6. **BAT LED**: Die LED leuchtet auf, wenn die Batterie derzeit Strom liefert. In diesem Fall müssen Sie den Batteriestand überwachen, um Schäden durch Tiefentladung zu vermeiden.
+7. :ref:`power_button`: Eingebauter Netzschalter zur Steuerung der Stromversorgung der Platine:
 
-  * **Single press**: Activates output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-  * **Continue holding for more than 5 seconds**: Directly turns off output.
+  * **Einmal drücken**: Aktiviert den Ausgang.
+  * **2 Sekunden lang gedrückt halten, bis die mittleren beiden Batterie-LEDs aufleuchten, dann loslassen**: Sendet eine Abschaltanforderung über I2C.
+  * **Weiter gedrückt halten für mehr als 5 Sekunden**: Schaltet den Ausgang direkt aus.
 
-8. :ref:`battery_indicators`: Indicates battery level and charging status.
-9. **I2C Connector**: SH1.0 4P terminal, compatible with **qwIIC** and **STEMMA QT**.
-10. **I2C Pin Headers**: 1x4P 2.54 pin headers.
-11. **Type A Output**: 5V output interface.
-12. **5V/GND Pin Headers**: 2 x 4P 2.54 pin headers.
-13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi.
-14. :ref:`battery_connector`: XH2.54 3P battery connector.
-15. **Warning LEDs**: If the battery is reversed, two red LEDs light up, warning of battery reversal.
+8. :ref:`battery_indicators`: Zeigt den Batteriestand und den Ladestatus an.
+9. **I2C Anschluss**: SH1.0 4P Terminal, kompatibel mit **qwIIC** und **STEMMA QT**.
+10. **I2C Pin Header**: 1x4P 2.54 Pin-Header.
+11. **Type A Ausgang**: 5V Ausgangsschnittstelle.
+12. **5V/GND Pin Header**: 2 x 4P 2.54 Pin-Header.
+13. :ref:`pin_header`: Raspberry Pi Pin-Header, direkt mit dem Raspberry Pi verbunden.
+14. :ref:`battery_connector`: XH2.54 3P Batterieanschluss.
+15. **Warn-LEDs**: Wenn die Batterie falsch herum eingesetzt ist, leuchten zwei rote LEDs auf, um vor der Verpolung der Batterie zu warnen.
 
 .. _power_button:
 
-Power Button
+Netzschalter
 ----------------
 
 .. image:: img/power_button.jpg
   :width: 500
   :align: center
 
-Onboard power button for controlling the board's power:
+Eingebauter Netzschalter zur Steuerung der Stromversorgung der Platine:
 
-* **Single press**: Activates output.
-* **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-* **Continue holding for more than 5 seconds**: Directly turns off output.
+* **Einmal drücken**: Aktiviert den Ausgang.
+* **2 Sekunden lang gedrückt halten, bis die mittleren beiden Batterie-LEDs aufleuchten, dann loslassen**: Sendet eine Abschaltanforderung über i2c.
+* **Weiter gedrückt halten für mehr als 5 Sekunden**: Schaltet den Ausgang direkt aus.
 
 .. _battery_indicators:
 
-Battery Indicators
+Batterieanzeige
 --------------------------------
 
-Four onboard LEDs indicate battery level and charging status. Note, if charging during shutdown, the indicator light will still display the charging status until charging is complete.
+Vier eingebaute LEDs zeigen den Batteriestand und den Ladestatus an. Beachten Sie, dass die Anzeigelampe auch bei ausgeschaltetem Zustand während des Ladevorgangs den Ladestatus anzeigt, bis der Ladevorgang abgeschlossen ist.
 
 .. image:: img/battery_indicator.jpg
   :width: 500
   :align: center
 
-* **4 LEDs lit**: Battery >80%
-* **3 LEDs lit**: 60%< Battery <80%
-* **2 LEDs lit**: 40%< Battery <60%
-* **1 LED lit**: 20%< Battery <40%
-* **First LED flashing**: Battery <20%
-* **LEDs incrementally light up in a cycle**: Charging
-* **Middle two LEDs flashing**: Waiting for shutdown signal
-* **All LEDs off**: Unpowered or in sleep mode
+* **4 LEDs leuchten**: Batterie >80%
+* **3 LEDs leuchten**: 60%< Batterie <80%
+* **2 LEDs leuchten**: 40%< Batterie <60%
+* **1 LED leuchtet**: 20%< Batterie <40%
+* **Erste LED blinkt**: Batterie <20%
+* **LEDs leuchten zyklisch auf**: Laden
+* **Mittlere zwei LEDs blinken**: Warten auf Abschaltsignal
+* **Alle LEDs aus**: Stromlos oder im Schlafmodus
 
 .. _power_input:
 
-Power Input
--------------
+Stromeingang
+--------------
 
 .. image:: img/power_input.jpg
   :width: 500
   :align: center
 
-If using on Raspberry Pi 5, the power input should use a USB PD source supporting 5V/5A, like the official Raspberry Pi 27W power source (recommended). Otherwise, under high power consumption, the battery may not charge or may even deplete until the battery can no longer supply power.
+Wenn Sie den Raspberry Pi 5 verwenden, sollte der Stromeingang eine USB PD-Quelle mit 5V/5A unterstützen, wie die offizielle Raspberry Pi 27W Stromquelle (empfohlen). Andernfalls kann die Batterie bei hohem Stromverbrauch möglicherweise nicht geladen werden oder sogar entladen werden, bis die Batterie nicht mehr ausreichend Strom liefern kann.
 
-The **BAT LED** can confirm whether the battery is currently supplying power externally to ensure battery safety so that the battery remains powered in case of a power outage, acting as a UPS.
+Die **BAT LED** kann bestätigen, ob die Batterie derzeit externen Strom liefert, um die Batteriesicherheit zu gewährleisten und die Batterie bei einem Stromausfall als USV zu verwenden.
 
 .. image:: img/bat_led.jpg
   :width: 500
   :align: center
 
-**Power Path**
+**Strompfad**
 
-PiPower 3 integrates power path functionality, automatically switching power paths to reduce battery wear and seamlessly switch power.
+PiPower 3 integriert die Strompfadfunktion und schaltet automatisch die Strompfade um, um den Batterieverschleiß zu reduzieren und nahtlos umzuschalten.
 
-* With external power connected, 5V output is directly from the external 5V, which can be switched off. If conditions allow, external power also charges the battery (see charging current).
-* When power is disconnected, the system automatically switches to battery step-down output for power, seamlessly switching to protect the system during a power outage.
+* Bei angeschlossenem externen Strom kommt der 5V Ausgang direkt vom externen 5V, der abgeschaltet werden kann. Wenn die Bedingungen es zulassen, wird die Batterie auch extern geladen (siehe Ladestrom).
+* Bei getrenntem Strom schaltet das System automatisch auf die Batteriestromversorgung um und schützt das System nahtlos bei einem Stromausfall.
 
-**BAT LED** can confirm whether the battery is currently supplying power externally.
+Die **BAT LED** kann bestätigen, ob die Batterie derzeit externen Strom liefert.
 
 .. image:: img/bat_led.jpg
   :width: 500
@@ -153,62 +167,62 @@ PiPower 3 integrates power path functionality, automatically switching power pat
 
 .. _battery_connector:
 
-Battery Connector
+Batterieanschluss
 ------------------------
-XH2.54 3P battery connector.
+XH2.54 3P Batterieanschluss.
 
 .. image:: img/battery_connector.jpg
   :width: 500
   :align: center
 
 
-Charging Related
+Laderelevantes
 -------------------
 
-**Charging Current**
+**Ladestrom**
 
-The maximum charging current adjusts based on the input voltage to ensure maximum power supply to the Raspberry Pi.
+Der maximale Ladestrom passt sich basierend auf der Eingangsspannung an, um eine maximale Stromversorgung des Raspberry Pi zu gewährleisten.
 
-* When powered on, the charging current dynamically adjusts based on input voltage. The maximum charging current is 1A; if the input voltage is below 4.63V, it is considered insufficient power input, and charging will be disabled. Between 4.63V-5.2V, the system will automatically adjust the charging current to ensure the input voltage is above 4.63V.
-* When powered off, the charging current is 1A.
+* Bei eingeschaltetem Zustand passt sich der Ladestrom dynamisch basierend auf der Eingangsspannung an. Der maximale Ladestrom beträgt 1A; wenn die Eingangsspannung unter 4,63V liegt, wird dies als unzureichende Stromversorgung betrachtet und das Laden wird deaktiviert. Zwischen 4,63V-5,2V passt das System den Ladestrom automatisch an, um sicherzustellen, dass die Eingangsspannung über 4,63V liegt.
+* Bei ausgeschaltetem Zustand beträgt der Ladestrom 1A.
 
-**Charging Process**
+**Ladeprozess**
 
-* When the total battery voltage is less than 3.7V, the battery is charged at 50mA.
-* When the total battery voltage is between 3.7V and 6V, the battery is charged at 100mA.
-* When the total battery voltage exceeds 6V, the battery is charged at the set maximum charging current;
-* When the total battery voltage approaches 8.4V, it enters constant voltage charging mode.
-* After the battery is fully charged and input continues, if the total battery voltage is less than 8V, charging will restart;
-* In constant voltage mode, if the charging current is less than 200mA, stop charging after 30s, check if the battery voltage is above the stop charging voltage; if it is, stop charging, if not, continue charging, and check again after 30s.
+* Wenn die Gesamtspannung der Batterie weniger als 3,7V beträgt, wird die Batterie mit 50mA geladen.
+* Wenn die Gesamtspannung der Batterie zwischen 3,7V und 6V liegt, wird die Batterie mit 100mA geladen.
+* Wenn die Gesamtspannung der Batterie 6V überschreitet, wird die Batterie mit dem eingestellten maximalen Ladestrom geladen;
+* Wenn die Gesamtspannung der Batterie 8,4V erreicht, wechselt sie in den Konstantspannungs-Lademodus.
+* Nach vollständiger Aufladung der Batterie und fortgesetzter Eingabe, wenn die Gesamtspannung der Batterie weniger als 8V beträgt, wird der Ladevorgang neu gestartet;
+* Im Konstantspannungsmodus, wenn der Ladestrom weniger als 200mA beträgt, wird das Laden nach 30s gestoppt, überprüft, ob die Batteriespannung über der Stoppladespannung liegt; wenn ja, wird das Laden gestoppt, wenn nicht, wird das Laden fortgesetzt und nach 30s erneut überprüft.
 
-**Charging Balance Function**
+**Ladeausgleichsfunktion**
 
-During charging, the charging chip constantly monitors the voltage of the two battery cells. When any cell voltage reaches the balance activation voltage of 4.1V, the corresponding internal balance MOS is activated, reducing the charging current for that cell.
+Während des Ladevorgangs überwacht der Ladechip ständig die Spannung der beiden Batteriezellen. Wenn eine Zellenspannung die Aktivierungsspannung des Ausgleichs von 4,1V erreicht, wird der entsprechende interne Ausgleichs-MOS aktiviert und reduziert den Ladestrom für diese Zelle.
 
-Balance shutdown conditions:
+Bedingungen für das Abschalten des Ausgleichs:
 
-#. Both battery cell voltages are above the balance activation voltage of 4.1V;
-#. Exiting normal charging status (e.g., NTC protection, input over-voltage, battery fully charged);
+#. Beide Zellenspannungen sind über der Aktivierungsspannung des Ausgleichs von 4,1V;
+#. Beenden des normalen Ladevorgangs (z.B. NTC-Schutz, Eingangsspannung überhöht, Batterie vollständig geladen);
 
-**Temperature Protection**
+**Temperaturschutz**
 
-* When the internal temperature of the charging chip exceeds 135 degrees, charging will be forcibly stopped;
-* When the internal temperature of the DC-DC chip exceeds 150 degrees, DC-DC will be shut down;
+* Wenn die Innentemperatur des Ladechips 135 Grad überschreitet, wird das Laden zwangsweise gestoppt;
+* Wenn die Innentemperatur des DC-DC-Chips 150 Grad überschreitet, wird der DC-DC abgeschaltet;
 
-MCU I2C Communication
+MCU I2C-Kommunikation
 -------------------------------
 
 .. image:: img/i2c_pins.jpg
   :width: 500
   :align: center
 
-I2C address: 0x5a
+I2C-Adresse: 0x5a
 
-The onboard MCU collects various signals from the board and stores them in registers, which can be accessed via I2C.
+Der integrierte MCU sammelt verschiedene Signale von der Platine und speichert sie in Registern, auf die über I2C zugegriffen werden kann.
 
-* :download:`Register Table </_static/pdf/Register Table.pdf>`
+* :download:`Registertabelle </_static/pdf/Register Table.pdf>`
 
-Set Register Table:
+Registertabelle einstellen:
 
 .. image:: img/set_register.png
     :width: 700
@@ -216,65 +230,66 @@ Set Register Table:
 
 .. _cap_onoff:
 
-Default ON/OFF
+Standardmäßig EIN/AUS
 ----------------------
 
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-This **ON/OFF** jumper is used to select: whether the output is defaultly activated when USB power is plugged in after shutdown.
+Dieser **EIN/AUS**-Jumper wird verwendet, um auszuwählen, ob der Ausgang standardmäßig aktiviert wird, wenn die USB-Stromversorgung nach dem Herunterfahren eingesteckt wird.
 
-* If the jumper cap is on the left, connected to OFF, then inserting USB power after shutdown will not activate the output.
-* If the jumper cap is on the right, connected to ON, then inserting USB power after shutdown will activate the output.
+* Wenn die Jumper-Kappe links ist, verbunden mit AUS, wird das Einstecken der USB-Stromversorgung nach dem Herunterfahren den Ausgang nicht aktivieren.
+* Wenn die Jumper-Kappe rechts ist, verbunden mit EIN, wird das Einstecken der USB-Stromversorgung nach dem Herunterfahren den Ausgang aktivieren.
 
-This feature is typically used for devices that need to be defaultly on, such as private servers: when there is a power outage outside, PiPower 3 instructs the Raspberry Pi to shutdown. Waiting for the next power supply, PiPower 3 automatically activates the output, turning on the Raspberry Pi, thus eliminating the need for manual operation.
+Diese Funktion wird typischerweise für Geräte verwendet, die standardmäßig eingeschaltet sein müssen, wie private Server: Bei einem Stromausfall weist PiPower 3 den Raspberry Pi an, herunterzufahren. Beim nächsten Stromversorgungszyklus aktiviert PiPower 3 automatisch den Ausgang und schaltet den Raspberry Pi ein, wodurch manuelle Eingriffe überflüssig werden.
 
-This function can also be used as a remote on/off feature. Connect the input to a smart plug or smart switch. Set the Shutdown Percentage to 100%. When remote shutdown is needed, directly control the smart plug to cut power, PiPower 3 detects the power outage, notifies the Raspberry Pi to shutdown, then cuts power. When remote power-on is needed, directly turn on the smart switch, PiPower detects power, defaults to power-on, and can start the Raspberry Pi, achieving remote control of power on and off.
+Diese Funktion kann auch als Fern-Ein/Aus-Funktion verwendet werden. Schließen Sie den Eingang an eine intelligente Steckdose oder einen intelligenten Schalter an. Stellen Sie den Abschaltprozentsatz auf 100 %. Wenn ein Fernabschalten erforderlich ist, steuern Sie die intelligente Steckdose direkt, um die Stromversorgung zu unterbrechen. PiPower 3 erkennt den Stromausfall, benachrichtigt den Raspberry Pi zum Herunterfahren und unterbricht dann die Stromversorgung. Wenn ein Fern-Einschalten erforderlich ist, schalten Sie den intelligenten Schalter direkt ein. PiPower erkennt die Stromversorgung, schaltet standardmäßig ein und kann den Raspberry Pi starten, um eine Fernsteuerung des Ein- und Ausschaltens zu ermöglichen.
 
 .. _cap_btn:
 
 BTN
 ---------
+
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-This **BTN** jumper is for an external power button. If you need to install PiPower 3 inside a casing, you might not be able to press the onboard power button. At this time, you need an external button to switch power on and off. Connect a self-recovering switch to the jumper, which can be a tactile switch or a vintage metal button. After connecting, you can press the external button just like the onboard button.
+Dieser **BTN**-Jumper ist für einen externen Netzschalter. Wenn Sie PiPower 3 in ein Gehäuse einbauen müssen, können Sie möglicherweise den eingebauten Netzschalter nicht drücken. In diesem Fall benötigen Sie einen externen Schalter zum Ein- und Ausschalten der Stromversorgung. Schließen Sie einen selbstsichernden Schalter an den Jumper an, der ein Taster oder ein Vintage-Metallschalter sein kann. Nach dem Anschließen können Sie den externen Schalter wie den eingebauten Schalter drücken.
 
 .. _cap_sdsig:
 
 SDSIG
 ------------
 
-The **SDSIG** shutdown signal involves three pins: pin 26, a middle pin, and a right-side GND pin. 
+Das **SDSIG**-Abschaltsignal umfasst drei Pins: Pin 26, einen mittleren Pin und einen rechten GND-Pin.
 
-* If you connect pin 26 to the middle pin using a jumper cap, SDSIG will connect to GPIO26 on the Raspberry Pi. After configuration, if the Raspberry Pi shuts down, the GPIO26 pin will be pulled high, indicating that SDSIG is at a high level, signaling PiPower 3 to power off.
-* If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND.
+* Wenn Sie Pin 26 mit dem mittleren Pin über eine Jumperkappe verbinden, wird SDSIG mit GPIO26 auf dem Raspberry Pi verbunden. Nach der Konfiguration, wenn der Raspberry Pi herunterfährt, wird der GPIO26-Pin auf High gezogen, was anzeigt, dass SDSIG auf High steht und PiPower 3 zum Ausschalten auffordert.
+* Wenn diese Funktion nicht benötigt wird, wie bei einem Einplatinencomputer wie Arduino oder Raspberry Pi Pico, sollte die Jumperkappe mit GND verbunden werden.
 
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-**SDSIG** is the shutdown signal pin. Pulling this pin high indicates the host is shut down and needs to be powered off. Pulling it low indicates the host is powered on. If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND. If using a Raspberry Pi, connect the jumper cap to pin 26, install ``pipower3`` software on the Raspberry Pi, and when the Raspberry Pi shuts down, it will pull this pin high, signaling PiPower 3 to power off.
+**SDSIG** ist der Abschaltsignalpin. Das Ziehen dieses Pins auf High zeigt an, dass der Host heruntergefahren ist und ausgeschaltet werden muss. Das Ziehen auf Low zeigt an, dass der Host eingeschaltet ist. Wenn diese Funktion nicht benötigt wird, wie bei einem Einplatinencomputer wie Arduino oder Raspberry Pi Pico, sollte die Jumperkappe mit GND verbunden werden. Wenn Sie einen Raspberry Pi verwenden, verbinden Sie die Jumperkappe mit Pin 26, installieren Sie die Software ``pipower3`` auf dem Raspberry Pi, und wenn der Raspberry Pi herunterfährt, wird dieser Pin auf High gezogen, was PiPower 3 zum Ausschalten auffordert.
 
 .. _pin_header:
 
-Pin Headers for RPi
+Pin-Header für RPi
 ---------------------------
 
-Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C and power, see Raspberry Pi pin diagram. Headers can be used to stack HATs, but note that I2C and pin 26 are connected.
+Raspberry Pi Pin-Header, direkt verbunden mit dem Raspberry Pi, einschließlich I2C und Stromversorgung, siehe Raspberry Pi Pin-Diagramm. Header können verwendet werden, um HATs zu stapeln, aber beachten Sie, dass I2C und Pin 26 verbunden sind.
 
 .. image:: img/40pin_header.jpg
   :width: 500
   :align: center
 
-.. list-table:: 
+.. list-table::
    :widths: 15 15
    :header-rows: 1
 
    * - Raspberry Pi
-     - MCU On Board
+     - MCU an Bord
    * - SDA
      - SDA
    * - SCL
@@ -285,4 +300,3 @@ Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C a
      - ID_EEPROM SDA
    * - ID_SC
      - ID_EEPROM SCL
-

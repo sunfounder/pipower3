@@ -1,27 +1,41 @@
-Use with Raspberry Pi Pico and ESP32 Boards
+.. note::
+
+    Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
+
+    **Warum beitreten?**
+
+    - **Expertenunterstützung**: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.
+    - **Lernen & Teilen**: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.
+    - **Exklusive Vorschauen**: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.
+    - **Spezialrabatte**: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.
+    - **Festliche Aktionen und Gewinnspiele**: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.
+
+    👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
+
+Verwendung mit Raspberry Pi Pico und ESP32 Boards
 ====================================================
-If you are using the PiPower 3 to power your Raspberry Pi Pico or ESP32 Board, you can connect the Raspberry Pi Pico or ESP32 Board to the PiPower 3's Type A output port or use two jump wires.
+Wenn Sie den PiPower 3 verwenden, um Ihr Raspberry Pi Pico oder ESP32 Board mit Strom zu versorgen, können Sie das Raspberry Pi Pico oder ESP32 Board an den Typ-A-Ausgangsport des PiPower 3 anschließen oder zwei Jumper-Kabel verwenden.
 
-Connect the board's I2C interface using a jumper. If no operation is required before powering off, directly connect the **SDSIG** jumper cap to the GND. If operations are necessary before shutdown, remove the jumper cap and connect the intermediate wire to an IO port on the Raspberry Pi Pico or ESP32 Board. This is used to notify PiPower 3 that it has completed shutdown and can power off.
+Verbinden Sie die I2C-Schnittstelle des Boards mit einem Jumper. Wenn keine Operation vor dem Ausschalten erforderlich ist, verbinden Sie den **SDSIG**-Jumper direkt mit GND. Wenn vor dem Herunterfahren Operationen notwendig sind, entfernen Sie den Jumper und verbinden das mittlere Kabel mit einem IO-Port am Raspberry Pi Pico oder ESP32 Board. Dies wird verwendet, um PiPower 3 mitzuteilen, dass es den Shutdown abgeschlossen hat und ausgeschaltet werden kann.
 
-We provide a library that allows you to monitor input and output voltages, battery voltage and percentage, power source, charging status, and other internal data.
+Wir stellen eine Bibliothek bereit, die es Ihnen ermöglicht, Eingangs- und Ausgangsspannungen, Batteriespannung und -prozent, Stromquelle, Ladestatus und andere interne Daten zu überwachen.
 
-#. Download the library from GitHub. You can quickly download it using the link below or visit: https://github.com/sunfounder/micropython_spc.
+#. Laden Sie die Bibliothek von GitHub herunter. Sie können sie schnell über den untenstehenden Link herunterladen oder besuchen Sie: https://github.com/sunfounder/micropython_spc.
 
     * :download:`micropython_spc <https://github.com/sunfounder/micropython_spc/archive/refs/heads/main.zip>`
 
-#. After downloading and unzipping, upload the ``spc`` folder to your Raspberry Pi Pico or ESP32 Board. Thonny is recommended for this purpose.
+#. Nach dem Herunterladen und Entpacken laden Sie den ``spc``-Ordner auf Ihr Raspberry Pi Pico oder ESP32 Board hoch. Thonny wird für diesen Zweck empfohlen.
 
     .. image:: img/micropython_upload.png
         :align: center
 
-#. Once uploaded, you can run a few examples from the ``micropython_spc-main`` folder to see the effects:
+#. Sobald der Upload abgeschlossen ist, können Sie einige Beispiele aus dem Ordner ``micropython_spc-main`` ausführen, um die Effekte zu sehen:
 
-    * ``example_pipower_3_read_all.py``: Use this example if you need to read all data at once and process them individually.
-    * ``example_pipower_3_read_individual.py``: If you only need to read certain data, this example provides individual data retrieval instructions.
-    * ``example_pipower_3_set_shutdown_percentage.py``: This example teaches how to set a shutdown battery percentage. This will send a shutdown signal to the host when the battery is not charging and falls below the set percentage. It will power off only after the host has shut down and received a power-off signal. Typically used with SBCs like Raspberry Pi. For microcontrollers, remove the **SDSIG** jumper cap and connect the intermediate wire to a pin. After safely shutting down upon receiving the shutdown signal, pull this pin high to power off PiPower 3.
-    * ``example_pipower_3_shutdown_when_request.py``: This example shows how to handle operations after receiving a shutdown signal. Remove the **SDSIG** jumper cap and connect the intermediate wire to a pin.
+    * ``example_pipower_3_read_all.py``: Verwenden Sie dieses Beispiel, wenn Sie alle Daten auf einmal lesen und einzeln verarbeiten müssen.
+    * ``example_pipower_3_read_individual.py``: Wenn Sie nur bestimmte Daten lesen müssen, bietet dieses Beispiel Anleitungen zur individuellen Datenabfrage.
+    * ``example_pipower_3_set_shutdown_percentage.py``: Dieses Beispiel zeigt, wie Sie einen Abschaltprozentsatz für die Batterie einstellen. Dies sendet ein Abschaltsignal an den Host, wenn die Batterie nicht geladen wird und unter den eingestellten Prozentsatz fällt. Es wird erst abgeschaltet, nachdem der Host heruntergefahren ist und ein Ausschalt-Signal empfangen hat. Typischerweise wird dies mit SBCs wie dem Raspberry Pi verwendet. Für Mikrocontroller entfernen Sie den **SDSIG**-Jumper und verbinden das mittlere Kabel mit einem Pin. Nachdem der Mikrocontroller das Abschaltsignal erhalten und sicher heruntergefahren wurde, ziehen Sie diesen Pin auf High, um PiPower 3 auszuschalten.
+    * ``example_pipower_3_shutdown_when_request.py``: Dieses Beispiel zeigt, wie Sie Vorgänge nach Erhalt eines Abschaltsignals behandeln. Entfernen Sie den **SDSIG**-Jumper und verbinden Sie das mittlere Kabel mit einem Pin.
 
-Micropython Library API Documentation:
+Micropython-Bibliothek API-Dokumentation:
 
 https://github.com/sunfounder/micropython_spc?tab=readme-ov-file#api
