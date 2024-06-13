@@ -58,8 +58,8 @@ Specification Table
      - \-
      - V
 
-Pinout
-------------
+Overview Diagram
+-------------------
 
 .. image:: img/pipower3_pinout.png
   :width: 800
@@ -67,10 +67,10 @@ Pinout
 
 1. :ref:`power_input`: External power input, can directly power Raspberry Pi while charging the battery.
 2. :ref:`cap_onoff`: Select whether to automatically start when the external power input is plugged in during the shutdown state.
-3. :ref:`cap_sdsig`: Shutdown signal, shorting pin 26 connects to the Raspberry Pi's GPIO26. After setting up this signal, the Raspberry Pi will shut down, and the signal will instruct the onboard MCU to power off.
+3. :ref:`cap_sdsig`: Shutdown signal, connecting pin 26 to the middle pin with a jumper cap connects **SDSIG** to GPIO26 on the Raspberry Pi. Once configured, if the Raspberry Pi shuts down, GPIO26 goes high, signaling PiPower 3 to power off.
 4. :ref:`cap_btn`: External power button jumper, used for external power button.
 5. **PWR LED**: Output status LED, lights up when output is activated.
-6. **BAT LED**: Indicates whether the battery is currently powering externally. If the LED is on, the battery is in use; monitor battery consumption.
+6. **BAT LED**: The LED lighting up indicates that the battery is currently supplying power. At this time, you need to monitor the battery level to prevent damage due to over-discharge.
 7. :ref:`power_button`: Onboard power button for controlling the board's power:
 
   * **Single press**: Activates output.
@@ -246,6 +246,11 @@ This **BTN** jumper is for an external power button. If you need to install PiPo
 
 SDSIG
 ------------
+
+The **SDSIG** shutdown signal involves three pins: pin 26, a middle pin, and a right-side GND pin. 
+
+* If you connect pin 26 to the middle pin using a jumper cap, SDSIG will connect to GPIO26 on the Raspberry Pi. After configuration, if the Raspberry Pi shuts down, the GPIO26 pin will be pulled high, indicating that SDSIG is at a high level, signaling PiPower 3 to power off.
+* If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND.
 
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
