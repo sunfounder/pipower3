@@ -1,27 +1,41 @@
-Use with Raspberry Pi Pico and ESP32 Boards
+.. note::
+
+    こんにちは、SunFounderのRaspberry Pi & Arduino & ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。
+
+    **参加する理由は？**
+
+    - **エキスパートサポート**：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。
+    - **学び＆共有**：ヒントやチュートリアルを交換してスキルを向上させましょう。
+    - **独占的なプレビュー**：新製品の発表や先行プレビューに早期アクセスしましょう。
+    - **特別割引**：最新製品の独占割引をお楽しみください。
+    - **祭りのプロモーションとギフト**：ギフトや祝日のプロモーションに参加しましょう。
+
+    👉 私たちと一緒に探索し、創造する準備はできていますか？[|link_sf_facebook|]をクリックして今すぐ参加しましょう！
+
+Raspberry Pi PicoおよびESP32ボードでの使用
 ====================================================
-If you are using the PiPower 3 to power your Raspberry Pi Pico or ESP32 Board, you can connect the Raspberry Pi Pico or ESP32 Board to the PiPower 3's Type A output port or use two jump wires.
+PiPower 3を使用してRaspberry Pi PicoまたはESP32ボードに電力を供給する場合、Raspberry Pi PicoまたはESP32ボードをPiPower 3のType A出力ポートに接続するか、ジャンパーワイヤーを2本使用して接続します。
 
-Connect the board's I2C interface using a jumper. If no operation is required before powering off, directly connect the **SDSIG** jumper cap to the GND. If operations are necessary before shutdown, remove the jumper cap and connect the intermediate wire to an IO port on the Raspberry Pi Pico or ESP32 Board. This is used to notify PiPower 3 that it has completed shutdown and can power off.
+ボードのI2Cインターフェースをジャンパーで接続します。電源オフ前に操作が必要ない場合、 **SDSIG** ジャンパーキャップをGNDに直接接続します。シャットダウン前に操作が必要な場合は、ジャンパーキャップを取り外し、中間ワイヤーをRaspberry Pi PicoまたはESP32ボードのIOポートに接続します。これにより、PiPower 3がシャットダウンを完了し、電源を切ることができることを通知します。
 
-We provide a library that allows you to monitor input and output voltages, battery voltage and percentage, power source, charging status, and other internal data.
+入力および出力電圧、バッテリー電圧とパーセンテージ、電源、充電状態、およびその他の内部データを監視するためのライブラリを提供しています。
 
-#. Download the library from GitHub. You can quickly download it using the link below or visit: https://github.com/sunfounder/micropython_spc.
+#. GitHubからライブラリをダウンロードします。以下のリンクを使用してすばやくダウンロードするか、https://github.com/sunfounder/micropython_spc を訪問してください。
 
     * :download:`micropython_spc <https://github.com/sunfounder/micropython_spc/archive/refs/heads/main.zip>`
 
-#. After downloading and unzipping, upload the ``spc`` folder to your Raspberry Pi Pico or ESP32 Board. Thonny is recommended for this purpose.
+#. ダウンロードして解凍した後、 ``spc`` フォルダーをRaspberry Pi PicoまたはESP32ボードにアップロードします。Thonnyを使用することをお勧めします。
 
     .. image:: img/micropython_upload.png
         :align: center
 
-#. Once uploaded, you can run a few examples from the ``micropython_spc-main`` folder to see the effects:
+#. アップロードが完了したら、 ``micropython_spc-main`` フォルダーからいくつかの例を実行して効果を確認できます：
 
-    * ``example_pipower_3_read_all.py``: Use this example if you need to read all data at once and process them individually.
-    * ``example_pipower_3_read_individual.py``: If you only need to read certain data, this example provides individual data retrieval instructions.
-    * ``example_pipower_3_set_shutdown_percentage.py``: This example teaches how to set a shutdown battery percentage. This will send a shutdown signal to the host when the battery is not charging and falls below the set percentage. It will power off only after the host has shut down and received a power-off signal. Typically used with SBCs like Raspberry Pi. For microcontrollers, remove the **SDSIG** jumper cap and connect the intermediate wire to a pin. After safely shutting down upon receiving the shutdown signal, pull this pin high to power off PiPower 3.
-    * ``example_pipower_3_shutdown_when_request.py``: This example shows how to handle operations after receiving a shutdown signal. Remove the **SDSIG** jumper cap and connect the intermediate wire to a pin.
+    * ``example_pipower_3_read_all.py``: すべてのデータを一度に読み取り、それぞれを個別に処理する必要がある場合にこの例を使用します。
+    * ``example_pipower_3_read_individual.py``: 特定のデータのみを読み取る必要がある場合、この例は個々のデータ取得手順を提供します。
+    * ``example_pipower_3_set_shutdown_percentage.py``: シャットダウンバッテリーパーセンテージを設定する方法を示します。バッテリーが充電されておらず、設定されたパーセンテージを下回った場合にホストにシャットダウン信号を送信します。ホストがシャットダウンし、電源オフ信号を受信した後にのみ電源が切れます。通常、Raspberry PiのようなSBCに使用されます。マイクロコントローラーの場合、この機能を使用するには、 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。シャットダウン信号を受信して安全にシャットダウンした後、このピンを高くしてPiPower 3の電源を切ります。
+    * ``example_pipower_3_shutdown_when_request.py``: シャットダウン信号を受信した後の操作を処理する方法を示します。 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。
 
-Micropython Library API Documentation:
+MicropythonライブラリAPIドキュメント:
 
 https://github.com/sunfounder/micropython_spc?tab=readme-ov-file#api

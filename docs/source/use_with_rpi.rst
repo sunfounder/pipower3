@@ -1,10 +1,24 @@
-Use with Raspberry Pi
+.. note::
+
+    こんにちは、SunFounderのRaspberry Pi & Arduino & ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。
+
+    **参加する理由は？**
+
+    - **エキスパートサポート**：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。
+    - **学び＆共有**：ヒントやチュートリアルを交換してスキルを向上させましょう。
+    - **独占的なプレビュー**：新製品の発表や先行プレビューに早期アクセスしましょう。
+    - **特別割引**：最新製品の独占割引をお楽しみください。
+    - **祭りのプロモーションとギフト**：ギフトや祝日のプロモーションに参加しましょう。
+
+    👉 私たちと一緒に探索し、創造する準備はできていますか？[|link_sf_facebook|]をクリックして今すぐ参加しましょう！
+
+Raspberry Piでの使用
 ========================
 
-Download and Install the ``pipower3`` Module
-----------------------------------------------------
+``pipower3`` モジュールのダウンロードとインストール
+-------------------------------------------------------
 
-Download the code from GitHub and install:
+GitHubからコードをダウンロードしてインストールします：
 
 .. code-block:: shell
     
@@ -13,29 +27,29 @@ Download the code from GitHub and install:
     cd pipower3
     sudo python3 install.py
 
-After installation, you will be prompted to reboot. Enter ``Y`` and press enter to reboot. After rebooting, the safe shutdown service will automatically start. If the button is pressed for 2 seconds or if the battery is low, the Raspberry Pi will shut down and notify PiPower 3 to power off.
+インストール後、再起動を求められます。 ``Y`` を入力し、Enterキーを押して再起動します。再起動後、安全なシャットダウンサービスが自動的に開始されます。ボタンが2秒間押された場合やバッテリーが低下した場合、Raspberry Piはシャットダウンし、PiPower 3に電源オフを通知します。
 
-Set Shutdown Percentage
---------------------------------
+シャットダウンパーセンテージの設定
+----------------------------------
 
-PiPower 3 sends a "LOW BATTERY" shutdown request through I2C to the host when there is no external power and the battery voltage drops below the shutdown percentage. The host can read the shutdown request signal through I2C, and if "LOW BATTERY" is detected, it can process the shutdown. 
+PiPower 3は、外部電源がなくなりバッテリー電圧がシャットダウンパーセンテージを下回ったときに、I2C経由でホストに「LOW BATTERY」シャットダウンリクエストを送信します。ホストはI2C経由でシャットダウンリクエスト信号を読み取り、「LOW BATTERY」が検出された場合、シャットダウンを処理できます。
 
-After shutting down, pulling the ``SDSIG`` high will power off the PiPower. This implements the low battery shutdown feature of PiPower 3.
+シャットダウン後、 ``SDSIG`` を高く引っ張るとPiPowerの電源が切れます。これにより、PiPower 3の低バッテリーシャットダウン機能が実装されます。
 
 .. note::
 
-    If you are use Raspberry Pi 5, if the power used is greater than 3A, the battery will not be able to sustain power for long. It is recommended to set the shutdown Percentage to 100%, i.e., notify the Raspberry Pi to shut down immediately when external power is disconnected, to protect the Raspberry Pi and data.
+    Raspberry Pi 5を使用している場合、消費電力が3Aを超えると、バッテリーが長時間電力を維持できなくなります。外部電源が切断された場合にRaspberry Piにすぐにシャットダウンを通知するために、シャットダウンパーセンテージを100%に設定することをお勧めします。これにより、Raspberry Piとデータを保護できます。
 
-You can set the shutdown percentage using the command, for example, set it to 30%. When the battery level is below 30%, PiPower3 will power off the Raspberry Pi after it shuts down.
+シャットダウンパーセンテージを設定するには、以下のコマンドを使用します。たとえば、30%に設定します。バッテリーレベルが30%を下回ると、PiPower3はRaspberry Piをシャットダウン後に電源を切ります。
 
 .. code-block:: shell
     
     pipower3 -sp 30 
 
-View the Basic Configurations
+基本設定の表示
 ----------------------------------------
 
-You can use the ``pipower3`` command to view the current information, detailed usage tutorial as follows:
+ ``pipower3`` コマンドを使用して現在の情報を表示できます。詳細な使用方法は以下の通りです：
 
 .. code-block::
 
@@ -69,28 +83,28 @@ You can use the ``pipower3`` command to view the current information, detailed u
                             Read shutdown request
     -a, --all             All
 
-Configure with Python
+Pythonでの設定
 -------------------------------
 
-PiPower 3 uses the ``spc`` library, which allows you to get data and set parameters in Python. The ``spc`` library is installed in a virtual environment, so you need to first enter the virtual environment.
+PiPower 3は ``spc`` ライブラリを使用しており、これによりPythonでデータを取得し、パラメータを設定できます。 ``spc`` ライブラリは仮想環境にインストールされているため、まず仮想環境に入る必要があります。
 
 .. code-block:: shell
 
     source /opt/pipower3/venv/bin/activate
 
-If you do not want to enter the virtual environment, you can reinstall ``spc`` to the system, which needs to be confirmed with ``--break-system`` due to possible conflicts with other libraries:
+仮想環境に入るのを避けたい場合、 ``spc`` をシステムに再インストールできますが、他のライブラリとの競合の可能性があるため ``--break-system`` で確認する必要があります：
 
 .. code-block:: shell
 
     sudo pip3 install --break-system git+http://github.com/sunfounder/spc.git
 
-Or if you want to install it in your own virtual environment, simply run the install command after entering your virtual environment:
+または、独自の仮想環境にインストールしたい場合、仮想環境に入った後にインストールコマンドを実行します：
 
 .. code-block:: shell
 
     pip3 install git+http://github.com/sunfounder/spc.git
 
-Now you can run examples:
+これで、以下の例を実行できます：
 
 .. code-block:: shell
 
@@ -100,12 +114,11 @@ Now you can run examples:
 
     python3 read_all.py
 
-* ``read_all.py``: Use this example if you need to read all data at once and process them individually.
-* ``read_individual.py``: If you only need to read certain data, this example provides individual data retrieval instructions.
-* ``set_shutdown_percentage.py``: This example teaches how to set a Shutdown battery percentage, which sends a shutdown signal to the host when there is no charging and the battery falls below this value. After the host shuts down, it receives a power-off signal before powering off. Typically used with SBCs like Raspberry Pi. Microcontrollers needing to use this feature should remove the SDSIG jumper cap and connect the middle wire to a pin. After receiving the shutdown signal and safely shutting down, pull this pin high to power off PiPower 3.
-* ``shutdown_when_request``: This example shows how to handle operations after receiving a shutdown signal. Remove the SDSIG jumper cap and connect the middle wire to a pin.
+* ``read_all.py``: すべてのデータを一度に読み取り、それぞれを個別に処理する必要がある場合にこの例を使用します。
+* ``read_individual.py``: 特定のデータのみを読み取る必要がある場合、この例は個々のデータ取得手順を提供します。
+* ``set_shutdown_percentage.py``: シャットダウンバッテリーパーセンテージを設定する方法を示します。バッテリーが充電されておらず、設定されたパーセンテージを下回った場合にホストにシャットダウン信号を送信します。ホストがシャットダウンし、電源オフ信号を受信した後にのみ電源が切れます。通常、Raspberry PiのようなSBCに使用されます。マイクロコントローラーの場合、この機能を使用するには、 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。シャットダウン信号を受信して安全にシャットダウンした後、このピンを高くしてPiPower 3の電源を切ります。
+* ``shutdown_when_request.py``: シャットダウン信号を受信した後の操作を処理する方法を示します。 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。
 
-Python Library API Documentation:
+PythonライブラリAPIドキュメント:
 
 https://github.com/sunfounder/spc?tab=readme-ov-file#api
-

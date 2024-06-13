@@ -1,30 +1,43 @@
-Use with Arduino Board
+.. note::
+
+    こんにちは、SunFounderのRaspberry Pi & Arduino & ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。
+
+    **参加する理由は？**
+
+    - **エキスパートサポート**：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。
+    - **学び＆共有**：ヒントやチュートリアルを交換してスキルを向上させましょう。
+    - **独占的なプレビュー**：新製品の発表や先行プレビューに早期アクセスしましょう。
+    - **特別割引**：最新製品の独占割引をお楽しみください。
+    - **祭りのプロモーションとギフト**：ギフトや祝日のプロモーションに参加しましょう。
+
+    👉 私たちと一緒に探索し、創造する準備はできていますか？[|link_sf_facebook|]をクリックして今すぐ参加しましょう！
+
+Arduinoボードでの使用
 ===================================
 
-If you are using the PiPower 3 to power your Arduino board, you can connect the Arduino to the PiPower 3's Type A output port or use two jump wires. Connect the board's I2C interface using a jumper. If no operation is required before powering off, directly connect the **SDSIG** jumper cap to the GND. If operations are necessary before shutdown, remove the jumper cap and connect the intermediate wire to an IO port on the Arduino to notify PiPower 3 that it can safely power off.
+PiPower 3を使用してArduinoボードに電力を供給する場合、ArduinoをPiPower 3のType A出力ポートに接続するか、ジャンパーワイヤーを2本使用して接続します。ボードのI2Cインターフェースをジャンパーで接続します。電源オフ前に操作が必要ない場合、 **SDSIG** ジャンパーキャップをGNDに直接接続します。シャットダウン前に操作が必要な場合は、ジャンパーキャップを取り外し、中間ワイヤーをArduinoのIOポートに接続してPiPower 3に安全に電源を切ることを通知します。
 
-We provide a library that allows you to monitor input and output voltages, battery voltage and percentage, power source, charging status, and other internal data.
+入力および出力電圧、バッテリー電圧とパーセンテージ、電源、充電状態、およびその他の内部データを監視するためのライブラリを提供しています。
 
-#. In the Arduino IDE, open the **Library Manager**, search for ``SunFounderPowerControl``, and download and install it.
+#. Arduino IDEで、 **Library Manager** を開き、 ``SunFounderPowerControl`` を検索してダウンロードおよびインストールします。
 
     .. image:: img/arduino_library.png
 
-#. After the installation, you can navigate to **File** -> **Examples** -> **SunFounderPowerControl** -> **PiPower 3**, where you will find four examples.
+#. インストール後、 **File** -> **Examples** -> **SunFounderPowerControl** -> **PiPower 3** に移動すると、4つの例が表示されます。
 
     .. image:: img/arduino_examples.png
 
-    * ``read_all``: Use this example if you need to read all data at once and process them individually.
-    * ``read_individual``: If you only need to read certain data, this example provides individual data retrieval instructions.
-    * ``set_shutdown_percentage``: This example teaches how to set a shutdown battery percentage. This feature sends a shutdown signal to the host when the battery is not charging and falls below the set percentage. After the host shuts down, it will power off only after receiving a power-off signal. Typically used with SBCs like Raspberry Pi. For microcontrollers, remove the **SDSIG** jumper cap and connect the intermediate wire to a pin. After safely shutting down upon receiving the shutdown signal, pull this pin high to power off PiPower 3.
-    * ``shutdown_when_request``: This example shows how to handle operations after receiving a shutdown signal. Remove the **SDSIG** jumper cap and connect the intermediate wire to a pin.
+    * ``read_all``: すべてのデータを一度に読み取り、それぞれを個別に処理する必要がある場合にこの例を使用します。
+    * ``read_individual``: 特定のデータのみを読み取る必要がある場合、この例は個々のデータ取得手順を提供します。
+    * ``set_shutdown_percentage``: シャットダウンバッテリーパーセンテージを設定する方法を示します。この機能は、バッテリーが充電されておらず、設定されたパーセンテージを下回った場合にホストにシャットダウン信号を送信します。ホストがシャットダウンした後、電源オフ信号を受信した後にのみ電源が切れます。通常、Raspberry PiのようなSBCに使用されます。マイクロコントローラーの場合、この機能を使用するには、 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。シャットダウン信号を受信して安全にシャットダウンした後、このピンを高くしてPiPower 3の電源を切ります。
+    * ``shutdown_when_request``: シャットダウン信号を受信した後の操作を処理する方法を示します。 **SDSIG** ジャンパーキャップを取り外し、中間ワイヤーをピンに接続します。
 
-#. Choose one of the examples and upload it to your board.
+#. これらの例のいずれかを選択してボードにアップロードします。
 
 .. note::
 
-    On boards where the I2C pins can be modified, it is necessary to change the code in ``Wire.begin()``.
+    I2Cピンを変更できるボードでは、 ``Wire.begin()`` のコードを変更する必要があります。
 
-Arduino Library API Documentation:
+ArduinoライブラリAPIドキュメント:
 
 https://github.com/sunfounder/arduino_spc?tab=readme-ov-file#api
-

@@ -1,151 +1,165 @@
-Hardware Introduction
+.. note::
+
+    こんにちは、SunFounderのRaspberry Pi & Arduino & ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。
+
+    **参加する理由は？**
+
+    - **エキスパートサポート**：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。
+    - **学び＆共有**：ヒントやチュートリアルを交換してスキルを向上させましょう。
+    - **独占的なプレビュー**：新製品の発表や先行プレビューに早期アクセスしましょう。
+    - **特別割引**：最新製品の独占割引をお楽しみください。
+    - **祭りのプロモーションとギフト**：ギフトや祝日のプロモーションに参加しましょう。
+
+    👉 私たちと一緒に探索し、創造する準備はできていますか？[|link_sf_facebook|]をクリックして今すぐ参加しましょう！
+
+ハードウェアの紹介
 ========================
 
-Specification Table
+仕様表
 -----------------------------
 
 .. list-table:: 
    :widths: 30 10 10 10 10
 
-   * - Parameter
-     - Min
-     - Typical
-     - Max
-     - Unit
-   * - Battery Shutdown Current
+   * - パラメータ
+     - 最小
+     - 典型
+     - 最大
+     - 単位
+   * - バッテリーシャットダウン電流
      - \-
      - \-
      - 60
      - uA
-   * - Battery Quiescent Current
+   * - バッテリー静止電流
      - \-
      - 25
      - \-
      - mA
-   * - DC-DC Output Voltage
+   * - DC-DC出力電圧
      - 5.1957
      - 5.2855
      - 5.3766
      - V
-   * - DC-DC Over Temperature Protection
+   * - DC-DC過温度保護
      - \-
      - 150
      - \-
      - ℃
-   * - Battery Charging Current
+   * - バッテリー充電電流
      - \-
      - \-
      - 1
      - A
-   * - Charging Over Temperature Protection
+   * - 充電過温度保護
      - \-
      - 135
      - \-
      - ℃
-   * - Input Low Voltage Switching Threshold
+   * - 入力低電圧切替しきい値
      - 4.54
      - 4.63
      - 4.72
      - V
-   * - Balancing Current
+   * - バランシング電流
      - \-
      - 40
      - \-
      - mA
-   * - Balancing Activation Voltage
+   * - バランシング作動電圧
      - \-
      - 4.1
      - \-
      - V
 
-Overview Diagram
+概要図
 -------------------
 
 .. image:: img/pipower3_pinout.png
   :width: 800
   :align: center
 
-1. :ref:`power_input`: External power input, can directly power Raspberry Pi while charging the battery.
-2. :ref:`cap_onoff`: Select whether to automatically start when the external power input is plugged in during the shutdown state.
-3. :ref:`cap_sdsig`: Shutdown signal, connecting pin 26 to the middle pin with a jumper cap connects **SDSIG** to GPIO26 on the Raspberry Pi. Once configured, if the Raspberry Pi shuts down, GPIO26 goes high, signaling PiPower 3 to power off.
-4. :ref:`cap_btn`: External power button jumper, used for external power button.
-5. **PWR LED**: Output status LED, lights up when output is activated.
-6. **BAT LED**: The LED lighting up indicates that the battery is currently supplying power. At this time, you need to monitor the battery level to prevent damage due to over-discharge.
-7. :ref:`power_button`: Onboard power button for controlling the board's power:
+1. :ref:`power_input`: 外部電源入力、バッテリーを充電しながらRaspberry Piに直接電力を供給できます。
+2. :ref:`cap_onoff`: シャットダウン状態で外部電源入力が差し込まれたときに自動的に起動するかどうかを選択します。
+3. :ref:`cap_sdsig`: シャットダウン信号、ジャンパーキャップでピン26を中央のピンに接続すると、 **SDSIG** がRaspberry PiのGPIO26に接続されます。設定が完了すると、Raspberry PiがシャットダウンするとGPIO26が高電位になり、PiPower 3に電源をオフにするように通知します。
+4. :ref:`cap_btn`: 外部電源ボタン用のジャンパー、外部電源ボタンに使用されます。
+5. **PWR LED**: 出力状態LED、出力が有効になると点灯します。
+6. **BAT LED**: バッテリーが現在電力を供給していることを示すLEDが点灯します。この時、過放電によるダメージを防ぐためにバッテリーの残量を監視する必要があります。
+7. :ref:`power_button`: ボードの電源を制御するオンボード電源ボタン：
 
-  * **Single press**: Activates output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-  * **Continue holding for more than 5 seconds**: Directly turns off output.
+  * **1回押す**: 出力を有効にします。
+  * **2秒間押し続け、中間の2つのバッテリーLEDが点灯したら放す**: i2cを介してシャットダウン要求を送信します。
+  * **5秒以上押し続ける**: 直接出力をオフにします。
 
-8. :ref:`battery_indicators`: Indicates battery level and charging status.
-9. **I2C Connector**: SH1.0 4P terminal, compatible with **qwIIC** and **STEMMA QT**.
-10. **I2C Pin Headers**: 1x4P 2.54 pin headers.
-11. **Type A Output**: 5V output interface.
-12. **5V/GND Pin Headers**: 2 x 4P 2.54 pin headers.
-13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi.
-14. :ref:`battery_connector`: XH2.54 3P battery connector.
-15. **Warning LEDs**: If the battery is reversed, two red LEDs light up, warning of battery reversal.
+8. :ref:`battery_indicators`: バッテリーの残量と充電状態を示します。
+9. **I2Cコネクタ**: SH1.0 4P端子、 **qwIIC** および **STEMMA QT** に対応。
+10. **I2Cピンヘッダ**: 1x4P 2.54ピンヘッダ。
+11. **タイプA出力**: 5V出力インターフェース。
+12. **5V/GNDピンヘッダ**: 2 x 4P 2.54ピンヘッダ。
+13. :ref:`pin_header`: Raspberry Piピンヘッダ、Raspberry Piに直接接続します。
+14. :ref:`battery_connector`: XH2.54 3Pバッテリーコネクタ。
+15. **警告LED**: バッテリーが逆接続されている場合、2つの赤色LEDが点灯し、バッテリー逆接続の警告を発します。
 
 .. _power_button:
 
-Power Button
+電源ボタン
 ----------------
 
 .. image:: img/power_button.jpg
   :width: 500
   :align: center
 
-Onboard power button for controlling the board's power:
+オンボードの電源ボタンでボードの電源を制御します：
 
-* **Single press**: Activates output.
-* **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-* **Continue holding for more than 5 seconds**: Directly turns off output.
+* **1回押す**: 出力を有効にします。
+* **2秒間押し続け、中間の2つのバッテリーLEDが点灯したら放す**: i2cを介してシャットダウン要求を送信します。
+* **5秒以上押し続ける**: 直接出力をオフにします。
 
 .. _battery_indicators:
 
-Battery Indicators
+バッテリーインジケータ
 --------------------------------
 
-Four onboard LEDs indicate battery level and charging status. Note, if charging during shutdown, the indicator light will still display the charging status until charging is complete.
+オンボードの4つのLEDがバッテリーの残量と充電状態を示します。シャットダウン中に充電している場合、インジケータライトは充電が完了するまで充電状態を表示し続けます。
 
 .. image:: img/battery_indicator.jpg
   :width: 500
   :align: center
 
-* **4 LEDs lit**: Battery >80%
-* **3 LEDs lit**: 60%< Battery <80%
-* **2 LEDs lit**: 40%< Battery <60%
-* **1 LED lit**: 20%< Battery <40%
-* **First LED flashing**: Battery <20%
-* **LEDs incrementally light up in a cycle**: Charging
-* **Middle two LEDs flashing**: Waiting for shutdown signal
-* **All LEDs off**: Unpowered or in sleep mode
+* **4つのLEDが点灯**: バッテリー >80%
+* **3つのLEDが点灯**: 60%< バッテリー <80%
+* **2つのLEDが点灯**: 40%< バッテリー <60%
+* **1つのLEDが点灯**: 20%< バッテリー <40%
+* **最初のLEDが点滅**: バッテリー <20%
+* **LEDが順に点灯するサイクル**: 充電中
+* **中間の2つのLEDが点滅**: シャットダウン信号を待っています
+* **すべてのLEDがオフ**: 電源が入っていないか、スリープモード
 
 .. _power_input:
 
-Power Input
+電源入力
 -------------
 
 .. image:: img/power_input.jpg
   :width: 500
   :align: center
 
-If using on Raspberry Pi 5, the power input should use a USB PD source supporting 5V/5A, like the official Raspberry Pi 27W power source (recommended). Otherwise, under high power consumption, the battery may not charge or may even deplete until the battery can no longer supply power.
+Raspberry Pi 5で使用する場合、電源入力は5V/5AをサポートするUSB PDソース（推奨は公式のRaspberry Pi 27W電源）を使用する必要があります。そうでないと、高い電力消費時にバッテリーが充電されず、バッテリーが電力を供給できなくなるまで消耗する可能性があります。
 
-The **BAT LED** can confirm whether the battery is currently supplying power externally to ensure battery safety so that the battery remains powered in case of a power outage, acting as a UPS.
+**BAT LED** はバッテリーが外部に電力を供給しているかどうかを確認でき、停電時にはバッテリーが電力を供給し続けることでUPS（無停電電源装置）の役割を果たします。
 
 .. image:: img/bat_led.jpg
   :width: 500
   :align: center
 
-**Power Path**
+**電力経路**
 
-PiPower 3 integrates power path functionality, automatically switching power paths to reduce battery wear and seamlessly switch power.
+PiPower 3は電力経路機能を統合しており、自動的に電力経路を切り替えてバッテリーの摩耗を減らし、シームレスに電力を切り替えます。
 
-* With external power connected, 5V output is directly from the external 5V, which can be switched off. If conditions allow, external power also charges the battery (see charging current).
-* When power is disconnected, the system automatically switches to battery step-down output for power, seamlessly switching to protect the system during a power outage.
+* 外部電源が接続されている場合、5V出力は直接外部5Vから供給され、オフにすることができます。条件が整えば、外部電源はバッテリーも充電します（充電電流を参照）。
+* 電力が切断されると、システムは自動的にバッテリーの降圧出力に切り替わり、停電時にシステムを保護するためにシームレスに切り替わります。
 
-**BAT LED** can confirm whether the battery is currently supplying power externally.
+**BAT LED** はバッテリーが外部に電力を供給しているかどうかを確認できます。
 
 .. image:: img/bat_led.jpg
   :width: 500
@@ -153,62 +167,62 @@ PiPower 3 integrates power path functionality, automatically switching power pat
 
 .. _battery_connector:
 
-Battery Connector
+バッテリーコネクタ
 ------------------------
-XH2.54 3P battery connector.
+XH2.54 3Pバッテリーコネクタ。
 
 .. image:: img/battery_connector.jpg
   :width: 500
   :align: center
 
 
-Charging Related
+充電に関して
 -------------------
 
-**Charging Current**
+**充電電流**
 
-The maximum charging current adjusts based on the input voltage to ensure maximum power supply to the Raspberry Pi.
+最大充電電流は入力電圧に基づいて調整され、Raspberry Piへの最大電力供給を確保します。
 
-* When powered on, the charging current dynamically adjusts based on input voltage. The maximum charging current is 1A; if the input voltage is below 4.63V, it is considered insufficient power input, and charging will be disabled. Between 4.63V-5.2V, the system will automatically adjust the charging current to ensure the input voltage is above 4.63V.
-* When powered off, the charging current is 1A.
+* 電源オン時、充電電流は入力電圧に基づいて動的に調整されます。最大充電電流は1Aであり、入力電圧が4.63V未満の場合、電力入力が不十分と見なされ、充電が無効になります。4.63Vから5.2Vの間では、システムは入力電圧が4.63V以上であることを確保するために充電電流を自動的に調整します。
+* 電源オフ時、充電電流は1Aです。
 
-**Charging Process**
+**充電プロセス**
 
-* When the total battery voltage is less than 3.7V, the battery is charged at 50mA.
-* When the total battery voltage is between 3.7V and 6V, the battery is charged at 100mA.
-* When the total battery voltage exceeds 6V, the battery is charged at the set maximum charging current;
-* When the total battery voltage approaches 8.4V, it enters constant voltage charging mode.
-* After the battery is fully charged and input continues, if the total battery voltage is less than 8V, charging will restart;
-* In constant voltage mode, if the charging current is less than 200mA, stop charging after 30s, check if the battery voltage is above the stop charging voltage; if it is, stop charging, if not, continue charging, and check again after 30s.
+* バッテリーの総電圧が3.7V未満の場合、50mAで充電します。
+* バッテリーの総電圧が3.7Vから6Vの間の場合、100mAで充電します。
+* バッテリーの総電圧が6Vを超える場合、設定された最大充電電流で充電します。
+* バッテリーの総電圧が8.4Vに近づくと、定電圧充電モードに入ります。
+* バッテリーが完全に充電され、入力が続く場合、バッテリーの総電圧が8V未満になると充電が再開されます。
+* 定電圧モードでは、充電電流が200mA未満の場合、30秒後に充電を停止し、バッテリー電圧が充電停止電圧を上回っているかを確認します。上回っていれば充電を停止し、そうでなければ充電を再開し、30秒後に再度確認します。
 
-**Charging Balance Function**
+**充電バランス機能**
 
-During charging, the charging chip constantly monitors the voltage of the two battery cells. When any cell voltage reaches the balance activation voltage of 4.1V, the corresponding internal balance MOS is activated, reducing the charging current for that cell.
+充電中、充電チップは2つのバッテリーセルの電圧を常に監視します。どちらかのセル電圧がバランス作動電圧の4.1Vに達すると、対応する内部バランスMOSが作動し、そのセルの充電電流を減少させます。
 
-Balance shutdown conditions:
+バランス停止条件：
 
-#. Both battery cell voltages are above the balance activation voltage of 4.1V;
-#. Exiting normal charging status (e.g., NTC protection, input over-voltage, battery fully charged);
+#. 両方のバッテリーセル電圧がバランス作動電圧の4.1Vを上回る場合。
+#. 通常の充電状態を終了した場合（例：NTC保護、入力過電圧、バッテリーの完全充電）。
 
-**Temperature Protection**
+**温度保護**
 
-* When the internal temperature of the charging chip exceeds 135 degrees, charging will be forcibly stopped;
-* When the internal temperature of the DC-DC chip exceeds 150 degrees, DC-DC will be shut down;
+* 充電チップの内部温度が135度を超えると、充電が強制的に停止されます。
+* DC-DCチップの内部温度が150度を超えると、DC-DCがシャットダウンされます。
 
-MCU I2C Communication
+MCU I2C通信
 -------------------------------
 
 .. image:: img/i2c_pins.jpg
   :width: 500
   :align: center
 
-I2C address: 0x5a
+I2Cアドレス: 0x5a
 
-The onboard MCU collects various signals from the board and stores them in registers, which can be accessed via I2C.
+オンボードのMCUは、ボードからの様々な信号を収集し、それらをレジスタに格納します。これらのレジスタはI2C経由でアクセスできます。
 
 * :download:`Register Table </_static/pdf/Register Table.pdf>`
 
-Set Register Table:
+レジスタ設定テーブル：
 
 .. image:: img/set_register.png
     :width: 700
@@ -216,54 +230,55 @@ Set Register Table:
 
 .. _cap_onoff:
 
-Default ON/OFF
+デフォルトのON/OFF
 ----------------------
 
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-This **ON/OFF** jumper is used to select: whether the output is defaultly activated when USB power is plugged in after shutdown.
+この **ON/OFF** ジャンパーは、シャットダウン後にUSB電源が接続されたときに出力がデフォルトで有効になるかどうかを選択するためのものです。
 
-* If the jumper cap is on the left, connected to OFF, then inserting USB power after shutdown will not activate the output.
-* If the jumper cap is on the right, connected to ON, then inserting USB power after shutdown will activate the output.
+* ジャンパーキャップが左側にあり、OFFに接続されている場合、シャットダウン後にUSB電源を接続しても出力は有効になりません。
+* ジャンパーキャップが右側にあり、ONに接続されている場合、シャットダウン後にUSB電源を接続すると出力が有効になります。
 
-This feature is typically used for devices that need to be defaultly on, such as private servers: when there is a power outage outside, PiPower 3 instructs the Raspberry Pi to shutdown. Waiting for the next power supply, PiPower 3 automatically activates the output, turning on the Raspberry Pi, thus eliminating the need for manual operation.
+この機能は、プライベートサーバーなど、デフォルトでオンにする必要があるデバイスに通常使用されます。外部で停電が発生した場合、PiPower 3はRaspberry Piにシャットダウンを指示します。次の電源供給を待つ間、PiPower 3は自動的に出力を有効にし、Raspberry Piを起動します。これにより手動操作が不要になります。
 
-This function can also be used as a remote on/off feature. Connect the input to a smart plug or smart switch. Set the Shutdown Percentage to 100%. When remote shutdown is needed, directly control the smart plug to cut power, PiPower 3 detects the power outage, notifies the Raspberry Pi to shutdown, then cuts power. When remote power-on is needed, directly turn on the smart switch, PiPower detects power, defaults to power-on, and can start the Raspberry Pi, achieving remote control of power on and off.
+この機能は、リモートオン/オフ機能としても使用できます。入力をスマートプラグやスマートスイッチに接続します。シャットダウンパーセンテージを100%に設定します。リモートシャットダウンが必要な場合は、スマートプラグを直接制御して電源を切ります。PiPower 3は停電を検出し、Raspberry Piにシャットダウンを通知してから電源を切ります。リモート電源オンが必要な場合は、スマートスイッチを直接オンにします。PiPowerが電力を検出し、デフォルトで電源オンに設定されているため、Raspberry Piを起動でき、リモートで電源のオン/オフを制御できます。
 
 .. _cap_btn:
 
 BTN
 ---------
+
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-This **BTN** jumper is for an external power button. If you need to install PiPower 3 inside a casing, you might not be able to press the onboard power button. At this time, you need an external button to switch power on and off. Connect a self-recovering switch to the jumper, which can be a tactile switch or a vintage metal button. After connecting, you can press the external button just like the onboard button.
+この **BTN** ジャンパーは外部電源ボタン用です。PiPower 3をケース内に設置する必要がある場合、オンボードの電源ボタンを押すことができないかもしれません。この場合、電源のオン/オフを切り替えるために外部ボタンが必要です。自己復帰型スイッチをジャンパーに接続します。これにはタクタイルスイッチやビンテージメタルボタンが使用できます。接続後、外部ボタンをオンボードボタンと同じように押すことができます。
 
 .. _cap_sdsig:
 
 SDSIG
 ------------
 
-The **SDSIG** shutdown signal involves three pins: pin 26, a middle pin, and a right-side GND pin. 
+**SDSIG** シャットダウン信号には、ピン26、中間ピン、右側のGNDピンの3つのピンが関与します。
 
-* If you connect pin 26 to the middle pin using a jumper cap, SDSIG will connect to GPIO26 on the Raspberry Pi. After configuration, if the Raspberry Pi shuts down, the GPIO26 pin will be pulled high, indicating that SDSIG is at a high level, signaling PiPower 3 to power off.
-* If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND.
+* ピン26をジャンパーキャップで中間ピンに接続すると、SDSIGはRaspberry PiのGPIO26に接続されます。設定後、Raspberry Piがシャットダウンすると、GPIO26ピンがハイに引かれ、SDSIGがハイレベルであることを示し、PiPower 3に電源オフを指示します。
+* この機能が不要な場合（例：ArduinoやRaspberry Pi Picoのようなシングルボードコンピュータの場合）、ジャンパーキャップをGNDに接続する必要があります。
 
 .. image:: img/btn_sdsig_off_on.jpg
   :width: 500
   :align: center
 
-**SDSIG** is the shutdown signal pin. Pulling this pin high indicates the host is shut down and needs to be powered off. Pulling it low indicates the host is powered on. If this function is not needed, such as with a single-board computer like Arduino or Raspberry Pi Pico, the jumper cap should be connected to GND. If using a Raspberry Pi, connect the jumper cap to pin 26, install ``pipower3`` software on the Raspberry Pi, and when the Raspberry Pi shuts down, it will pull this pin high, signaling PiPower 3 to power off.
+**SDSIG** はシャットダウン信号ピンです。このピンをハイに引くと、ホストがシャットダウンし、電源をオフにする必要があることを示します。ローに引くと、ホストが電源オンであることを示します。この機能が不要な場合（例：ArduinoやRaspberry Pi Picoのようなシングルボードコンピュータの場合）、ジャンパーキャップをGNDに接続する必要があります。Raspberry Piを使用する場合は、ジャンパーキャップをピン26に接続し、Raspberry Piに``pipower3``ソフトウェアをインストールします。Raspberry Piがシャットダウンすると、このピンをハイに引き、PiPower 3に電源オフを指示します。
 
 .. _pin_header:
 
-Pin Headers for RPi
+Raspberry Pi用ピンヘッダ
 ---------------------------
 
-Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C and power, see Raspberry Pi pin diagram. Headers can be used to stack HATs, but note that I2C and pin 26 are connected.
+Raspberry Piピンヘッダは、Raspberry Piに直接接続され、I2Cと電源を含みます。Raspberry Piのピン図を参照してください。ヘッダはHATを積み重ねるために使用できますが、I2Cとピン26が接続されていることに注意してください。
 
 .. image:: img/40pin_header.jpg
   :width: 500
@@ -274,7 +289,7 @@ Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C a
    :header-rows: 1
 
    * - Raspberry Pi
-     - MCU On Board
+     - オンボードMCU
    * - SDA
      - SDA
    * - SCL
@@ -285,4 +300,3 @@ Raspberry Pi pin headers, directly connects to the Raspberry Pi, including I2C a
      - ID_EEPROM SDA
    * - ID_SC
      - ID_EEPROM SCL
-
