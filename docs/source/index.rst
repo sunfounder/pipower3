@@ -62,6 +62,7 @@ PiPower 3は、最先端のバッテリー管理と多用途の互換性を備�
     hardware_introduction
     battery
     fan
+    compatible_sbc
 
 
 **著作権表示**
