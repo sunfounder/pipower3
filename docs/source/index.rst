@@ -48,6 +48,7 @@ The PiPower 3 ensures your projects stay powered with state-of-the-art battery m
     hardware_introduction
     battery
     fan
+    compitable_sbc
 
 
 **Copyright Notice**
