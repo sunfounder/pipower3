@@ -62,6 +62,7 @@ Das PiPower 3 stellt sicher, dass Ihre Projekte mit modernster Batterieverwaltun
     hardware_introduction
     battery
     fan
+    compatible_sbc
 
 
 **Urheberrechtshinweis**
