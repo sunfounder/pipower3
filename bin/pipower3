@@ -12,7 +12,7 @@ for arg in "$@"; do
 done
 
 if [ $background == true ]; then
-    echo "running at background"
+    echo "PiPower 3 running at background"
     /opt/pipower3/venv/bin/pipower3-service "$args" 2>1 1>/dev/null &
 else
     /opt/pipower3/venv/bin/pipower3-service "$@"

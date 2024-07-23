@@ -2,6 +2,7 @@ from .version import __version__
 
 def main():
     from spc.spc import SPC
+    from .pipower3 import PiPower3
     import argparse
     import time
     spc = SPC()
@@ -23,49 +24,16 @@ def main():
     args = parser.parse_args()
 
     if args.command == 'start':
-        import os
-        from pipower3.logger import Logger
-
-        log = Logger('pipower3')
-        log.info('Starting PiPower 3 service')
-        last_shutdown_request = None
-        last_is_input_plugged_in = None
-        last_is_charging = None
-        while True:
-            shutdown_request = spc.read_shutdown_request()
-            is_input_plugged_in = spc.read_is_input_plugged_in()
-            is_charging = spc.read_is_charging()
-            if shutdown_request != last_shutdown_request:
-                if shutdown_request == spc.SHUTDOWN_REQUEST_NONE:
-                    continue
-                elif shutdown_request == spc.SHUTDOWN_REQUEST_BUTTON:
-                    log.info("Shutdown request: Button")
-                    os.system("sudo shutdown -h now")
-                elif shutdown_request == spc.SHUTDOWN_REQUEST_LOW_BATTERY:
-                    log.info("Shutdown request: Low battery")
-                    os.system("sudo shutdown -h now")
-                last_shutdown_request = shutdown_request
-            if is_input_plugged_in != last_is_input_plugged_in:
-                if is_input_plugged_in:
-                    log.info("Input plugged in")
-                else:
-                    log.info("Input unplugged")
-                last_is_input_plugged_in = is_input_plugged_in
-            if is_charging != last_is_charging:
-                if is_charging:
-                    log.info("Charging")
-                else:
-                    log.info("Not charging")
-                last_is_charging = is_charging
-            time.sleep(1)
+        pipower3 = PiPower3()
+        pipower3.start()
             
     if args.command == "stop":
         import os
-        from pipower3.logger import Logger
-        log = Logger('PiPower 3')
-        log.info('Stopping PiPower 3 service')
         os.system('kill -9 $(pgrep -f "pipower3 start")')
         os.system('kill -9 $(pgrep -f "pipower3-service start")')
+        pipower3 = PiPower3()
+        pipower3.stop()
+        quit()
 
     if args.shutdown_percentage != '':
         if args.shutdown_percentage == None:

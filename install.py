@@ -25,16 +25,15 @@ installer = SF_Installer(
     ],
 
     # - Install from pip
-    # pip_dependencies=[
-    #     'influxdb',
-    #     'Pillow',
-    #     'adafruit-circuitpython-ssd1306',
-    # ]
+    pip_dependencies=[
+        'influxdb',
+    ]
 
     # - Install python source code from git
     python_source={
         'pipower3': './',
         'spc': 'git+http://github.com/sunfounder/spc.git',
+        'pm_dashboard': 'git+http://github.com/sunfounder/pm_dashboard.git',
     },
 
     # - Setup config txt
@@ -53,4 +52,9 @@ installer = SF_Installer(
     # - Copy device tree overlay to /boot/overlays
     dtoverlay = ['sunfounder-pipower3.dtbo'],
 )
-installer.install()
+installer.parser.add_argument("--disable-dashboard", action='store_true', help="Disable dashboard")
+args = installer.parser.parse_args()
+if args.disable_dashboard:
+    installer.python_source.pop('pm_dashboard')
+    installer.custom_pip_dependencies.pop(installer.custom_pip_dependencies.index('influxdb'))
+installer.main()
