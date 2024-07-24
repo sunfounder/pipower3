@@ -33,7 +33,7 @@ installer = SF_Installer(
     python_source={
         'pipower3': './',
         'spc': 'git+http://github.com/sunfounder/spc.git',
-        'pm_dashboard': 'git+http://github.com/sunfounder/pm_dashboard.git',
+        'pm_dashboard': 'git+http://github.com/sunfounder/pm_dashboard.git@v1.1',
     },
 
     # - Setup config txt
