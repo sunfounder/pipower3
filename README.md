@@ -13,7 +13,7 @@ Quick Links:
 <a id="about_this_kit"></a>
 ## About this kit:
 
-Elevate your Raspberry Pi 5 with the Pironman 5, our top-tier case designed for unmatched style and functionality. It's the perfect blend of aesthetics and performance:
+Elevate your Raspberry Pi with the Pironman 5, our top-tier case designed for unmatched style and functionality. It's the perfect blend of aesthetics and performance:
 
 
 

@@ -38,7 +38,7 @@ After shutting down, pulling the ``SDSIG`` high will power off the PiPower. This
 
 .. note::
 
-    If you are use Raspberry Pi 5, if the power used is greater than 3A, the battery will not be able to sustain power for long. It is recommended to set the shutdown Percentage to 100%, i.e., notify the Raspberry Pi to shut down immediately when external power is disconnected, to protect the Raspberry Pi and data.
+    If you are use Raspberry Pi, if the power used is greater than 3A, the battery will not be able to sustain power for long. It is recommended to set the shutdown Percentage to 100%, i.e., notify the Raspberry Pi to shut down immediately when external power is disconnected, to protect the Raspberry Pi and data.
 
 You can set the shutdown percentage using the command, for example, set it to 30%. When the battery level is below 30%, PiPower3 will power off the Raspberry Pi after it shuts down.
 
