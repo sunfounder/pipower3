@@ -1,4 +1,4 @@
-Compitable SBCs
+Compatible SBCs
 =========================
 
 PiPower 3 is compatible with various Single Board Computers (SBCs). It is fully compatible with the Raspberry Pi series in terms of structural installation, power supply, and software configuration.
