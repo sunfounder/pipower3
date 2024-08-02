@@ -27,9 +27,9 @@ Dies ist ein maßgeschneidertes Batteriepaket von SunFounder, bestehend aus zwei
 
 **Eigenschaften**
 
-* Batterieladung: 5V/2A
-* Batterieausgang: 5V/5A
-* Batteriekapazität: 3,7V 2000mAh x 2
-* Batterielebensdauer: 90min
-* Batterieladezeit: 130min
-* Anschluss: XH2.54 3P
+* **Zusammensetzung**: Li-Ion
+* **Batteriekapazität**: 2000mAh, 14.8Wh
+* **Batteriegewicht**: 90.8g
+* **Anzahl der Zellen**: 2
+* **Anschluss**: XH2.54 3pin
+* **Überentladungsschutz**: 6.0V

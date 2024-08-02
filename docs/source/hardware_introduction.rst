@@ -144,7 +144,7 @@ Stromeingang
   :width: 500
   :align: center
 
-Wenn Sie den Raspberry Pi 5 verwenden, sollte der Stromeingang eine USB PD-Quelle mit 5V/5A unterstützen, wie die offizielle Raspberry Pi 27W Stromquelle (empfohlen). Andernfalls kann die Batterie bei hohem Stromverbrauch möglicherweise nicht geladen werden oder sogar entladen werden, bis die Batterie nicht mehr ausreichend Strom liefern kann.
+Wenn Sie den Raspberry Pi verwenden, sollte der Stromeingang eine USB PD-Quelle mit 5V/5A unterstützen, wie die offizielle Raspberry Pi 27W Stromquelle (empfohlen). Andernfalls kann die Batterie bei hohem Stromverbrauch möglicherweise nicht geladen werden oder sogar entladen werden, bis die Batterie nicht mehr ausreichend Strom liefern kann.
 
 Die **BAT LED** kann bestätigen, ob die Batterie derzeit externen Strom liefert, um die Batteriesicherheit zu gewährleisten und die Batterie bei einem Stromausfall als USV zu verwenden.
 

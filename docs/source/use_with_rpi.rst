@@ -38,7 +38,7 @@ Nach dem Herunterfahren wird das ``SDSIG`` hochgezogen und der PiPower wird ausg
 
 .. note::
 
-    Wenn Sie den Raspberry Pi 5 verwenden und der Stromverbrauch größer als 3A ist, kann der Akku die Stromversorgung nicht lange aufrechterhalten. Es wird empfohlen, den Abschaltprozentsatz auf 100% zu setzen, d.h., den Raspberry Pi sofort herunterzufahren, wenn die externe Stromversorgung getrennt wird, um den Raspberry Pi und die Daten zu schützen.
+    Wenn Sie den Raspberry Pi verwenden und der Stromverbrauch größer als 3A ist, kann der Akku die Stromversorgung nicht lange aufrechterhalten. Es wird empfohlen, den Abschaltprozentsatz auf 100% zu setzen, d.h., den Raspberry Pi sofort herunterzufahren, wenn die externe Stromversorgung getrennt wird, um den Raspberry Pi und die Daten zu schützen.
 
 Sie können den Abschaltprozentsatz mit dem folgenden Befehl festlegen, z.B. auf 30%. Wenn der Akkustand unter 30% fällt, schaltet PiPower3 den Raspberry Pi nach dem Herunterfahren aus.
 
