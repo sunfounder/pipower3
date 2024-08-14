@@ -137,10 +137,10 @@ rst_epilog = """
 
 .. |link_PiPower_3| raw:: html
 
-    <a href="https://www.sunfounder.com/products/power-pack?_pos=1&_sid=49148229d&_ss=r" target="_blank">Purchase Link for PiPower 3</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">Purchase Link for PiPower 3</a>
 
 .. |link_PiPower| raw:: html
 
-    <a href="https://www.sunfounder.com/products/power-pack?_pos=1&_sid=49148229d&_ss=r" target="_blank">PiPower 3</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">PiPower 3</a>
 
 """
