@@ -12,10 +12,12 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-SunFounder PiPower 3 - Schützen Sie Ihr Gerät & Ihre Daten
+SunFounder |link_PiPower| - Schützen Sie Ihr Gerät & Ihre Daten
 ================================================================================
 
-Vielen Dank, dass Sie sich für unser PiPower 3 entschieden haben.
+* |link_PiPower_3|
+
+Vielen Dank, dass Sie sich für unser |link_PiPower| entschieden haben.
 
 .. note::
     Dieses Dokument ist in folgenden Sprachen verfügbar.

@@ -135,5 +135,12 @@ rst_epilog = """
 
     <a href="https://www.putty.org/" target="_blank">PuTTY</a>
 
+.. |link_PiPower_3| raw:: html
+
+    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">Kauflink für PiPower 3</a>
+
+.. |link_PiPower| raw:: html
+
+    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">PiPower 3</a>
 
 """
