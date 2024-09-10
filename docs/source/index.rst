@@ -35,7 +35,7 @@ Thank you for choosing our |link_PiPower|.
 
 PiPower 3 is a comprehensive UPS solution, featuring power path management, charging and discharging for dual lithium batteries, protection against reverse polarity, overcharging, and deep discharge. 
 
-It delivers a robust output of 5V/5A and is configured with HAT+ to ensure perfect compatibility with Raspberry Pi. Additional features include a USB Type-A output and a 2x4P header for power output, making it also suitable for other SBCs, as well as for Arduino and Pico, ESP32 platforms. 
+It delivers a robust output of 5V/3A and is configured with HAT+ to ensure perfect compatibility with Raspberry Pi. Additional features include a USB Type-A output and a 2x4P header for power output, making it also suitable for other SBCs, as well as for Arduino and Pico, ESP32 platforms. 
 
 An onboard microcontroller manages power on and off, and through I2C communication, it can monitor input voltage, output voltage, battery voltage, battery level, whether external power is connected, charging status, and whether power is supplied by the battery or USB.
 
@@ -43,8 +43,8 @@ The PiPower 3 ensures your projects stay powered with state-of-the-art battery m
 
 **Features**
 
-* **Input**: 5V/5A, USB Type-C with PD support
-* **Output**: 5V/5A, compatible with Raspberry Pi GPIO, USB Type-A, and a 2x4P 2.54 header
+* **Input**: 5V/3A, USB Type-C with PD support
+* **Output**: 5V/3A, compatible with Raspberry Pi GPIO, USB Type-A, and a 2x4P 2.54 header
 * **Charging Power**: 7.4V/1A
 * **Battery Specs**: 7.4V 2 Cell 18650 Li-ion, XH2.54 3P connector
 * Default On jumper cap, external button extension header, shutdown signal jumper

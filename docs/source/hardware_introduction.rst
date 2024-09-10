@@ -144,7 +144,7 @@ Power Input
   :width: 500
   :align: center
 
-If using on Raspberry Pi, the power input should use a USB PD source supporting 5V/5A, like the official Raspberry Pi 27W power source (recommended). Otherwise, under high power consumption, the battery may not charge or may even deplete until the battery can no longer supply power.
+If using on Raspberry Pi, the power input should use a USB PD source supporting 5V/3A, like the official Raspberry Pi 27W power source (recommended). Otherwise, under high power consumption, the battery may not charge or may even deplete until the battery can no longer supply power.
 
 The **BAT LED** can confirm whether the battery is currently supplying power externally to ensure battery safety so that the battery remains powered in case of a power outage, acting as a UPS.
 

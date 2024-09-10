@@ -49,7 +49,7 @@ Operating Steps
 
 Before using your PiPower 3, charge it fully. A full charge prevents battery issues and ensures optimal performance.
 
-For charging, use a 5V/5A PD charger, such as the official Raspberry Pi 27W power supply. This allows the PiPower 3 to deliver a maximum current of 5A. 
+For charging, use a 5V/3A PD charger, such as the official Raspberry Pi 27W power supply. This allows the PiPower 3 to deliver a maximum current of 3A. 
 
 .. image:: img/power_input.jpg
   :width: 500
