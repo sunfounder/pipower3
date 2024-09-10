@@ -7,6 +7,6 @@ PiPower 3はさまざまなシングルボードコンピュータ（SBC）に�
 
 ソフトウェア構成に関しては、Python、MicroPython、Arduinoなどのプログラミング言語をサポートしています。特定のSBCに基づいて適切な言語を選択する必要があります。
 
-.. image:: img/compatible_sbc.jpg
+.. image:: img/pipower3_compatible_sbc.jpg
     :width: 800
     :align: center
