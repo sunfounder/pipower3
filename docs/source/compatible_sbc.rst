@@ -7,7 +7,7 @@ Einige SBCs können von PiPower 3 mit Strom versorgt werden, sind jedoch möglic
 
 In Bezug auf die Softwarekonfiguration unterstützen wir Programmiersprachen wie Python, MicroPython und Arduino. Sie müssen die entsprechende Sprache basierend auf Ihrem spezifischen SBC auswählen.
 
-.. image:: img/compatible_sbc.jpg
+.. image:: img/pipower3_compatible_sbc.jpg
     :width: 800
     :align: center
     

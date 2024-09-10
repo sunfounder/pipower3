@@ -49,7 +49,7 @@ Betriebsschritte
 
 Bevor Sie Ihr PiPower 3 verwenden, laden Sie es vollständig auf. Eine vollständige Ladung verhindert Batterieprobleme und gewährleistet eine optimale Leistung.
 
-Zum Laden verwenden Sie ein 5V/5A PD-Ladegerät, wie das offizielle 27W-Netzteil von Raspberry Pi. Dies ermöglicht es dem PiPower 3, einen maximalen Strom von 5A zu liefern.
+Zum Laden verwenden Sie ein 5V/3A PD-Ladegerät, wie das offizielle 27W-Netzteil von Raspberry Pi. Dies ermöglicht es dem PiPower 3, einen maximalen Strom von 3A zu liefern.
 
 .. image:: img/power_input.jpg
   :width: 500

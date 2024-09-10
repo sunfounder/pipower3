@@ -35,7 +35,7 @@ Vielen Dank, dass Sie sich für unser |link_PiPower| entschieden haben.
 
 PiPower 3 ist eine umfassende UPS-Lösung mit Strompfad-Management, Lade- und Entladefunktion für zwei Lithiumbatterien sowie Schutz vor Verpolung, Überladung und Tiefentladung.
 
-Es liefert eine robuste Ausgabe von 5V/5A und ist mit HAT+ konfiguriert, um eine perfekte Kompatibilität mit dem Raspberry Pi zu gewährleisten. Zu den weiteren Funktionen gehören ein USB-Typ-A-Ausgang und ein 2x4P-Header für den Stromausgang, wodurch es auch für andere Einplatinencomputer, sowie für Arduino- und Pico-, ESP32-Plattformen geeignet ist.
+Es liefert eine robuste Ausgabe von 5V/3A und ist mit HAT+ konfiguriert, um eine perfekte Kompatibilität mit dem Raspberry Pi zu gewährleisten. Zu den weiteren Funktionen gehören ein USB-Typ-A-Ausgang und ein 2x4P-Header für den Stromausgang, wodurch es auch für andere Einplatinencomputer, sowie für Arduino- und Pico-, ESP32-Plattformen geeignet ist.
 
 Ein eingebauter Mikrocontroller verwaltet das Ein- und Ausschalten der Stromversorgung und kann über die I2C-Kommunikation die Eingangsspannung, Ausgangsspannung, Batteriespannung, den Batteriestand, ob externe Stromversorgung angeschlossen ist, den Ladezustand und ob die Stromversorgung über die Batterie oder USB erfolgt, überwachen.
 
@@ -43,8 +43,8 @@ Das PiPower 3 stellt sicher, dass Ihre Projekte mit modernster Batterieverwaltun
 
 **Merkmale**
 
-* **Eingang**: 5V/5A, USB Typ-C mit PD-Unterstützung
-* **Ausgang**: 5V/5A, kompatibel mit Raspberry Pi GPIO, USB Typ-A und einem 2x4P 2.54 Header
+* **Eingang**: 5V/3A, USB Typ-C mit PD-Unterstützung
+* **Ausgang**: 5V/3A, kompatibel mit Raspberry Pi GPIO, USB Typ-A und einem 2x4P 2.54 Header
 * **Ladeleistung**: 7.4V/1A
 * **Batteriespezifikationen**: 7.4V 2-Zellen 18650 Li-ion, XH2.54 3P Stecker
 * Standard-On-Jumper-Kappe, externer Taster-Anschlussheader, Abschaltsignal-Jumper
