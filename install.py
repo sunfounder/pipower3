@@ -26,7 +26,7 @@ installer = SF_Installer(
 
     # - Install from pip
     pip_dependencies=[
-        'influxdb',
+        'pip',
     ]
 
     # - Install python source code from git

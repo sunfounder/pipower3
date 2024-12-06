@@ -17,7 +17,9 @@ classifiers = [
 ]
 dynamic = ["version"]
 
-dependencies = []
+dependencies = [
+  "influxdb",
+]
 
 [project.scripts]
 pipower3-service = "pipower3:main"
