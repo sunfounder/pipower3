@@ -25,11 +25,9 @@ installer = SF_Installer(
     ],
 
     # - Install from pip
-    # pip_dependencies=[
-    #     'influxdb',
-    #     'Pillow',
-    #     'adafruit-circuitpython-ssd1306',
-    # ]
+    pip_dependencies=[
+        'pip',
+    ],
 
     # - Install python source code from git
     python_source={
