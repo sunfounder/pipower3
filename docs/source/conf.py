@@ -23,6 +23,12 @@ project = 'SunFounder Pironman'
 copyright = f'{time.localtime().tm_year}, SunFounder'
 author = 'www.sunfounder.com'
 
+# -- sphinx_rtd_theme Theme options -----------------------------------------------------
+html_theme_options = {
+    'flyout_display': 'attached',
+    'version_selector': False,
+    'language_selector': False,
+}
 
 # -- General configuration ---------------------------------------------------
 
@@ -34,11 +40,6 @@ extensions = [
     'sphinx_copybutton',
     'sphinx_rtd_theme'
 ]
-
-# -- sphinx_rtd_theme Theme options -----------------------------------------------------
-html_theme_options = {
-    'flyout_display': 'attached'
-}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
