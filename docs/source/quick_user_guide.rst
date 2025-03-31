@@ -1,19 +1,20 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi & Arduino & ESP32 en Facebook! Profundiza en Raspberry Pi, Arduino y ESP32 con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprender y compartir**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Vistas previas exclusivas**: Accede antes que nadie a nuevos anuncios de productos y avances.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más nuevos.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-Quick User Guide
-=======================
+Guía Rápida del Usuario
+==========================
+
 Pinout
 ------------
 
@@ -21,60 +22,60 @@ Pinout
   :width: 800
   :align: center
 
-1. :ref:`power_input`: External power input, can directly power Raspberry Pi while charging the battery.
-2. :ref:`cap_onoff`: Select whether to automatically start when the external power input is plugged in during the shutdown state.
-3. :ref:`cap_sdsig`: Shutdown signal, connecting pin 26 to the middle pin with a jumper cap connects **SDSIG** to GPIO26 on the Raspberry Pi. Once configured, if the Raspberry Pi shuts down, GPIO26 goes high, signaling PiPower 3 to power off.
-4. :ref:`cap_btn`: External power button jumper, used for external power button.
-5. **PWR LED**: Output status LED, lights up when output is activated.
-6. **BAT LED**: The LED lighting up indicates that the battery is currently supplying power. At this time, you need to monitor the battery level to prevent damage due to over-discharge.
-7. :ref:`power_button`: Onboard power button for controlling the board's power:
+1. :ref:`power_input`: Entrada de alimentación externa, puede alimentar directamente la Raspberry Pi mientras carga la batería.
+2. :ref:`cap_onoff`: Selecciona si debe iniciarse automáticamente cuando se conecta la entrada de alimentación externa durante el estado de apagado.
+3. :ref:`cap_sdsig`: Señal de apagado, conectar el pin 26 al pin central con un capuchón de puente conecta **SDSIG** al GPIO26 de la Raspberry Pi. Una vez configurado, si la Raspberry Pi se apaga, GPIO26 se eleva, indicando que PiPower 3 debe apagarse.
+4. :ref:`cap_btn`: Puente para botón de encendido externo, utilizado para el botón de encendido externo.
+5. **LED de PWR**: LED de estado de salida, se ilumina cuando la salida está activada.
+6. **LED de BAT**: El LED iluminado indica que la batería está actualmente suministrando energía. En este momento, debes monitorear el nivel de la batería para evitar daños por sobre-descarga.
+7. :ref:`power_button`: Botón de encendido integrado para controlar la energía de la placa:
 
-  * **Single press**: Activates output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-  * **Continue holding for more than 5 seconds**: Directly turns off output.
+  * **Presión corta**: Activa la salida.
+  * **Mantén presionado durante 2 segundos, hasta que se iluminen los dos LEDs de batería del medio, luego suelta**: Envía una solicitud de apagado a través de I2C.
+  * **Sigue presionando por más de 5 segundos**: Apaga directamente la salida.
 
-8. :ref:`battery_indicators`: Indicates battery level and charging status.
-9. **I2C Connector**: SH1.0 4P terminal, compatible with **qwIIC** and **STEMMA QT**.
-10. **I2C Pin Headers**: 1x4P 2.54 pin headers.
-11. **Type A Output**: 5V output interface.
-12. **5V/GND Pin Headers**: 2 x 4P 2.54 pin headers.
-13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi.
-14. :ref:`battery_connector`: XH2.54 3P battery connector.
-15. **Warning LEDs**: If the battery is reversed, two red LEDs light up, warning of battery reversal.
+8. :ref:`battery_indicators`: Indica el nivel de batería y el estado de carga.
+9. **Conector I2C**: Terminal SH1.0 4P, compatible con **qwIIC** y **STEMMA QT**.
+10. **Pines I2C**: Encabezados de 1x4P 2.54 pines.
+11. **Salida Tipo A**: Interfaz de salida de 5V.
+12. **Pines 5V/GND**: 2 x 4P 2.54 pines.
+13. :ref:`pin_header`: Encabezados de pines para Raspberry Pi, se conecta directamente a la Raspberry Pi.
+14. :ref:`battery_connector`: Conector de batería XH2.54 3P.
+15. **LEDs de advertencia**: Si la batería está invertida, dos LEDs rojos se iluminan, advirtiendo sobre la inversión de la batería.
 
-Operating Steps
-------------------
+Pasos de Operación
+---------------------
 
-1. Charge the PiPower 3.
+1. Carga el PiPower 3.
 
-Before using your PiPower 3, charge it fully. A full charge prevents battery issues and ensures optimal performance.
+Antes de usar tu PiPower 3, cárgalo completamente. Una carga completa previene problemas con la batería y asegura un rendimiento óptimo.
 
-For charging, use a 5V/3A PD charger, such as the official Raspberry Pi 27W power supply. This allows the PiPower 3 to deliver a maximum current of 3A. 
+Para cargarlo, utiliza un cargador PD de 5V/3A, como la fuente de alimentación oficial de 27W para Raspberry Pi. Esto permite que PiPower 3 entregue una corriente máxima de 3A.
 
 .. image:: img/power_input.jpg
   :width: 500
   :align: center
 
-You'll see the indicator light blink during charging.
+Verás que el indicador parpadea durante la carga.
 
 .. image:: img/battery_indicator.jpg
   :width: 500
   :align: center
 
-* **4 LEDs lit**: Battery >80%
-* **3 LEDs lit**: 60%< Battery <80%
-* **2 LEDs lit**: 40%< Battery <60%
-* **1 LED lit**: 20%< Battery <40%
-* **First LED flashing**: Battery <20%
-* **LEDs incrementally light up in a cycle**: Charging
-* **Middle two LEDs flashing**: Waiting for shutdown signal
-* **All LEDs off**: Unpowered or in sleep mode
+* **4 LEDs iluminados**: Batería >80%
+* **3 LEDs iluminados**: 60%< Batería <80%
+* **2 LEDs iluminados**: 40%< Batería <60%
+* **1 LED iluminado**: 20%< Batería <40%
+* **Primer LED parpadeando**: Batería <20%
+* **LEDs iluminándose en ciclo**: Cargando
+* **Dos LEDs centrales parpadeando**: Esperando la señal de apagado
+* **Todos los LEDs apagados**: Sin alimentación o en modo de reposo
 
-2. Output power to the mainboard.
+2. Salida de energía hacia la placa base.
 
-If you're using a Raspberry Pi, no additional wiring is necessary.
+Si estás usando una Raspberry Pi, no se requiere cableado adicional.
 
-For other mainboards, you can connect them to PiPower 3's Type A output port or use two jump wires.
+Para otras placas base, puedes conectarlas al puerto de salida Tipo A de PiPower 3 o usar dos cables de puente.
 
 .. image:: img/output_mainboard.jpg
     :width: 500
@@ -84,32 +85,32 @@ For other mainboards, you can connect them to PiPower 3's Type A output port or 
     :width: 400
     :align: center
 
-3. Press the power button once to power your mainboard. 
+3. Presiona el botón de encendido una vez para encender tu placa base.
 
-You will see the **PWR LED** light up, and your mainboard will receive power from PiPower 3.
+Verás que el **LED de PWR** se ilumina, y tu placa base recibirá energía de PiPower 3.
 
 .. image:: img/pwr_led.png
     :width: 500
     :align: center
 
 
-4. To turn off the power after use.
+4. Para apagar la energía después de usar.
 
-  * **Continue holding for more than 5 seconds**: Directly turns off the output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: If you have configured the :ref:`pipower_software`, this action sends a shutdown request via I2C for a safe shutdown.
+  * **Sigue presionando por más de 5 segundos**: Apaga directamente la salida.
+  * **Mantén presionado durante 2 segundos, hasta que se iluminen los dos LEDs de batería del medio, luego suelta**: Si has configurado el :ref:`pipower_software`, esta acción enviará una solicitud de apagado vía I2C para un apagado seguro.
 
 .. note::
 
-    When your Type C power cable is still plugged in, the battery indicator will continue to display the charging status until charging is complete.
+    Cuando tu cable de alimentación Tipo C sigue conectado, el indicador de batería continuará mostrando el estado de carga hasta que la carga esté completa.
 
 .. _pipower_software:
 
-Software Configuration
+Configuración del Software
 ------------------------------------
 
-In addition to using the PiPower 3 directly, you can also utilize our provided library to monitor input and output voltages, current, battery voltage, percentage, power source, charging status, and other internal data such as shutdown requests.
+Además de usar PiPower 3 directamente, también puedes utilizar nuestra biblioteca proporcionada para monitorear los voltajes de entrada y salida, corriente, voltaje de la batería, porcentaje, fuente de alimentación, estado de carga y otros datos internos como las solicitudes de apagado.
 
-Please choose the appropriate tutorial based on your mainboard.
+Por favor, elige el tutorial adecuado según tu placa base.
 
 .. toctree::
     :maxdepth: 2

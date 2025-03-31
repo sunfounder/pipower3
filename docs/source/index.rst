@@ -1,59 +1,62 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi & Arduino & ESP32 en Facebook! Profundiza en Raspberry Pi, Arduino y ESP32 con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprender y compartir**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Vistas previas exclusivas**: Accede antes que nadie a nuevos anuncios de productos y avances.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más nuevos.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-SunFounder |link_PiPower| - Protect Your Device & Data
+SunFounder |link_PiPower| - Protege tu dispositivo y tus datos
 ================================================================================
 
 * |link_PiPower_3| 
 
-Thank you for choosing our |link_PiPower|.
+Gracias por elegir nuestro |link_PiPower|.
 
 .. note::
-    This document is available in the following languages.
+    Este documento está disponible en los siguientes idiomas.
 
         * |link_german_tutorials|
         * |link_jp_tutorials|
         * |link_en_tutorials|
+        * |link_fr_tutorials|
+        * |link_es_tutorials|
+        * |link_it_tutorials|
     
-    Please click on the respective links to access the document in your preferred language.
+    Haz clic en los enlaces respectivos para acceder al documento en tu idioma preferido.
 
 .. image:: img/pipower3_picture.jpg
     :width: 400
     :align: center
 
 
-PiPower 3 is a comprehensive UPS solution, featuring power path management, charging and discharging for dual lithium batteries, protection against reverse polarity, overcharging, and deep discharge. 
+PiPower 3 es una solución UPS completa, que incluye gestión de rutas de energía, carga y descarga para baterías de litio duales, protección contra inversión de polaridad, sobrecarga y descarga profunda. 
 
-It delivers a robust output of 5V/3A and is configured with HAT+ to ensure perfect compatibility with Raspberry Pi. Additional features include a USB Type-A output and a 2x4P header for power output, making it also suitable for other SBCs, as well as for Arduino and Pico, ESP32 platforms. 
+Ofrece una salida robusta de 5V/3A y está configurado con HAT+ para garantizar una compatibilidad perfecta con Raspberry Pi. Además, incluye una salida USB Tipo-A y un encabezado 2x4P para salida de energía, lo que lo hace adecuado también para otras SBCs, así como para plataformas Arduino y Pico, ESP32. 
 
-An onboard microcontroller manages power on and off, and through I2C communication, it can monitor input voltage, output voltage, battery voltage, battery level, whether external power is connected, charging status, and whether power is supplied by the battery or USB.
+Un microcontrolador integrado gestiona el encendido y apagado, y mediante comunicación I2C, puede monitorear el voltaje de entrada, el voltaje de salida, el voltaje de la batería, el nivel de la batería, si está conectada alimentación externa, el estado de carga y si la energía es suministrada por la batería o por USB.
 
-The PiPower 3 ensures your projects stay powered with state-of-the-art battery management and versatile compatibility, making it an essential tool for any tech enthusiast looking to enhance their hardware setup.
+El PiPower 3 garantiza que tus proyectos permanezcan alimentados con una gestión avanzada de baterías y compatibilidad versátil, convirtiéndolo en una herramienta esencial para cualquier entusiasta de la tecnología que busque mejorar su configuración de hardware.
 
-**Features**
+**Características**
 
-* **Input**: 5V/3A, USB Type-C with PD support
-* **Output**: 5V/3A, compatible with Raspberry Pi GPIO, USB Type-A, and a 2x4P 2.54 header
-* **Charging Power**: 7.4V/1A
-* **Battery Specs**: 7.4V 2 Cell 18650 Li-ion, XH2.54 3P connector
-* Default On jumper cap, external button extension header, shutdown signal jumper
-* Onboard indicators for battery level, input source, power status, reverse polarity, and output power
-* Onboard 32-bit RISC-V microcontroller, supporting I2C communication
-* **I2C communication interfaces**: Raspberry Pi GPIO, SH1.0 4P (compatible with Qwiic, STEMMA QT), and 1x4P 2.54 header
+* **Entrada**: 5V/3A, USB Tipo-C con soporte PD
+* **Salida**: 5V/3A, compatible con GPIO de Raspberry Pi, USB Tipo-A y un encabezado 2x4P 2.54
+* **Potencia de carga**: 7.4V/1A
+* **Especificaciones de la batería**: 7.4V 2 celdas 18650 Li-ion, conector XH2.54 3P
+* Capuchón de puente predeterminado en ON, encabezado de extensión para botón externo, puente de señal de apagado
+* Indicadores integrados para nivel de batería, fuente de entrada, estado de energía, inversión de polaridad y salida de energía
+* Microcontrolador RISC-V de 32 bits integrado, que soporta comunicación I2C
+* **Interfaces de comunicación I2C**: GPIO de Raspberry Pi, SH1.0 4P (compatible con Qwiic, STEMMA QT) y encabezado 1x4P 2.54
 
 
-**Contents**
+**Contenido**
 
 .. toctree::
     :maxdepth: 2
@@ -67,7 +70,7 @@ The PiPower 3 ensures your projects stay powered with state-of-the-art battery m
     compatible_sbc
 
 
-**Copyright Notice**
+**Aviso de derechos de autor**
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
+Todos los contenidos, incluidos pero no limitados a textos, imágenes y códigos de este manual, son propiedad de la empresa SunFounder. Solo debes usarlos para estudio personal, investigación, disfrute u otros fines no comerciales o sin fines de lucro, según las regulaciones y leyes de derechos de autor correspondientes, sin infringir los derechos legales del autor y de los titulares de los derechos correspondientes. Para cualquier persona o entidad que use estos materiales con fines comerciales sin permiso, la empresa se reserva el derecho de tomar medidas legales.
 

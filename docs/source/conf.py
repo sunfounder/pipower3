@@ -99,7 +99,7 @@ rst_epilog = """
 
 .. |link_sf_facebook| raw:: html
 
-    <a href="https://bit.ly/raphaelkit" target="_blank">here</a>
+    <a href="https://bit.ly/raphaelkit" target="_blank">qui</a>
     
 .. |link_german_tutorials| raw:: html
 
@@ -113,6 +113,17 @@ rst_epilog = """
 
     <a href="https://docs.sunfounder.com/projects/pipower3/en/latest/" target="_blank">English Online-tutorials</a>
 
+.. |link_fr_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/fr/latest/" target="_blank">idacticiels en ligne en français</a>
+
+.. |link_es_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/es/latest/" target="_blank">Tutoriales en línea en español</a>
+
+.. |link_it_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/it/latest/" target="_blank">Tutorial online in italiano</a>
 
 .. |link_kodi| raw:: html
 
@@ -146,7 +157,7 @@ rst_epilog = """
 
 .. |link_PiPower_3| raw:: html
 
-    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">Purchase Link for PiPower 3</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-raspberry-pi-5-ups-power-supply?_pos=2&_sid=b6b504487&_ss=r" target="_blank">Link di acquisto per PiPower 3</a>
 
 .. |link_PiPower| raw:: html
 
