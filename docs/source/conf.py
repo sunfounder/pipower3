@@ -113,6 +113,17 @@ rst_epilog = """
 
     <a href="https://docs.sunfounder.com/projects/pipower3/en/latest/" target="_blank">English Online-tutorials</a>
 
+.. |link_fr_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/fr/latest/" target="_blank">idacticiels en ligne en français</a>
+
+.. |link_es_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/es/latest/" target="_blank">Tutoriales en línea en español</a>
+
+.. |link_it_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/pipower3/it/latest/" target="_blank">Tutorial online in italiano</a>
 
 .. |link_kodi| raw:: html
 
