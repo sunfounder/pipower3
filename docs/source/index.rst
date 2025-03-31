@@ -25,6 +25,9 @@ SunFounder |link_PiPower| - デバイスとデータを保護する
         * |link_german_tutorials| （ドイツ語）
         * |link_jp_tutorials| （日本語）
         * |link_en_tutorials| （英語）
+        * |link_fr_tutorials|（フランス語）
+        * |link_es_tutorials|（スペイン語）
+        * |link_it_tutorials|（イタリア語）
     
     希望の言語でドキュメントにアクセスするには、各リンクをクリックしてください。
 
