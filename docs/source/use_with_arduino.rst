@@ -1,44 +1,44 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez plus profondément dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux nouvelles annonces de produits et aperçus.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des concours et promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Use with Arduino Board
-===================================
+Utilisation avec une carte Arduino
+=====================================
 
-If you are using the PiPower 3 to power your Arduino board, you can connect the Arduino to the PiPower 3's Type A output port or use two jump wires. Connect the board's I2C interface using a jumper. If no operation is required before powering off, directly connect the **SDSIG** jumper cap to the GND. If operations are necessary before shutdown, remove the jumper cap and connect the intermediate wire to an IO port on the Arduino to notify PiPower 3 that it can safely power off.
+Si vous utilisez le PiPower 3 pour alimenter votre carte Arduino, vous pouvez connecter l'Arduino au port de sortie Type A du PiPower 3 ou utiliser deux fils de connexion. Connectez l'interface I2C de la carte à l'aide d'un cavalier. Si aucune opération n'est nécessaire avant l'extinction, connectez directement le cavalier **SDSIG** à la masse (GND). Si des opérations sont nécessaires avant l'extinction, retirez le cavalier et connectez le fil intermédiaire à un port IO de l'Arduino pour informer PiPower 3 qu'il peut s'éteindre en toute sécurité.
 
-We provide a library that allows you to monitor input and output voltages, battery voltage and percentage, power source, charging status, and other internal data.
+Nous fournissons une bibliothèque qui vous permet de surveiller les tensions d'entrée et de sortie, la tension et le pourcentage de la batterie, la source d'alimentation, l'état de la charge et d'autres données internes.
 
-#. In the Arduino IDE, open the **Library Manager**, search for ``SunFounderPowerControl``, and download and install it.
+#. Dans l'IDE Arduino, ouvrez le **Gestionnaire de Bibliothèques**, recherchez ``SunFounderPowerControl``, puis téléchargez et installez-la.
 
     .. image:: img/arduino_library.png
 
-#. After the installation, you can navigate to **File** -> **Examples** -> **SunFounderPowerControl** -> **PiPower 3**, where you will find four examples.
+#. Après l'installation, vous pouvez naviguer vers **Fichier** -> **Exemples** -> **SunFounderPowerControl** -> **PiPower 3**, où vous trouverez quatre exemples.
 
     .. image:: img/arduino_examples.png
 
-    * ``read_all``: Use this example if you need to read all data at once and process them individually.
-    * ``read_individual``: If you only need to read certain data, this example provides individual data retrieval instructions.
-    * ``set_shutdown_percentage``: This example teaches how to set a shutdown battery percentage. This feature sends a shutdown signal to the host when the battery is not charging and falls below the set percentage. After the host shuts down, it will power off only after receiving a power-off signal. Typically used with SBCs like Raspberry Pi. For microcontrollers, remove the **SDSIG** jumper cap and connect the intermediate wire to a pin. After safely shutting down upon receiving the shutdown signal, pull this pin high to power off PiPower 3.
-    * ``shutdown_when_request``: This example shows how to handle operations after receiving a shutdown signal. Remove the **SDSIG** jumper cap and connect the intermediate wire to a pin.
+    * ``read_all`` : Utilisez cet exemple si vous avez besoin de lire toutes les données en une seule fois et de les traiter individuellement.
+    * ``read_individual`` : Si vous devez uniquement lire certaines données, cet exemple vous fournit des instructions pour récupérer les données individuelles.
+    * ``set_shutdown_percentage`` : Cet exemple montre comment définir un pourcentage de batterie pour l'arrêt. Cette fonctionnalité envoie un signal d'arrêt à l'hôte lorsque la batterie ne se charge pas et tombe en dessous du pourcentage défini. Après l'arrêt de l'hôte, celui-ci s'éteindra uniquement après avoir reçu un signal d'extinction. Utilisé typiquement avec des SBCs comme le Raspberry Pi. Pour les microcontrôleurs, retirez le cavalier **SDSIG** et connectez le fil intermédiaire à une broche. Après un arrêt en toute sécurité suite à la réception du signal d'arrêt, tirez cette broche vers le haut pour éteindre le PiPower 3.
+    * ``shutdown_when_request`` : Cet exemple montre comment gérer les opérations après avoir reçu un signal d'arrêt. Retirez le cavalier **SDSIG** et connectez le fil intermédiaire à une broche.
 
-#. Choose one of the examples and upload it to your board.
+#. Choisissez l'un des exemples et téléchargez-le sur votre carte.
 
 .. note::
 
-    On boards where the I2C pins can be modified, it is necessary to change the code in ``Wire.begin()``.
+    Sur les cartes où les broches I2C peuvent être modifiées, il est nécessaire de changer le code dans ``Wire.begin()``.
 
-Arduino Library API Documentation:
+Documentation de l'API de la bibliothèque Arduino :
 
 https://github.com/sunfounder/arduino_spc?tab=readme-ov-file#api
 

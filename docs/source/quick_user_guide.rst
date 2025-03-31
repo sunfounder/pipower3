@@ -1,19 +1,19 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez plus profondément dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux nouvelles annonces de produits et aperçus.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des concours et promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Quick User Guide
-=======================
+Guide d'utilisateur rapide
+============================
 Pinout
 ------------
 
@@ -21,60 +21,60 @@ Pinout
   :width: 800
   :align: center
 
-1. :ref:`power_input`: External power input, can directly power Raspberry Pi while charging the battery.
-2. :ref:`cap_onoff`: Select whether to automatically start when the external power input is plugged in during the shutdown state.
-3. :ref:`cap_sdsig`: Shutdown signal, connecting pin 26 to the middle pin with a jumper cap connects **SDSIG** to GPIO26 on the Raspberry Pi. Once configured, if the Raspberry Pi shuts down, GPIO26 goes high, signaling PiPower 3 to power off.
-4. :ref:`cap_btn`: External power button jumper, used for external power button.
-5. **PWR LED**: Output status LED, lights up when output is activated.
-6. **BAT LED**: The LED lighting up indicates that the battery is currently supplying power. At this time, you need to monitor the battery level to prevent damage due to over-discharge.
-7. :ref:`power_button`: Onboard power button for controlling the board's power:
+1. :ref:`power_input` : Entrée d'alimentation externe, peut alimenter directement le Raspberry Pi tout en chargeant la batterie.
+2. :ref:`cap_onoff` : Sélectionnez si le démarrage automatique doit se faire lorsque l'alimentation externe est branchée en état d'arrêt.
+3. :ref:`cap_sdsig` : Signal d'arrêt, connecter la broche 26 à la broche centrale avec un cavalier permet de connecter **SDSIG** à GPIO26 sur le Raspberry Pi. Une fois configuré, si le Raspberry Pi s'arrête, GPIO26 devient haut, signalant à PiPower 3 de s'éteindre.
+4. :ref:`cap_btn` : Cavalier pour bouton d'alimentation externe, utilisé pour un bouton d'alimentation externe.
+5. **PWR LED** : LED d'état de la sortie, s'allume lorsque la sortie est activée.
+6. **BAT LED** : La LED qui s'allume indique que la batterie fournit actuellement de l'énergie. À ce moment-là, vous devez surveiller le niveau de la batterie pour éviter tout dommage dû à une décharge excessive.
+7. :ref:`power_button` : Bouton d'alimentation intégré pour contrôler l'alimentation de la carte :
 
-  * **Single press**: Activates output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: Sends shutdown request via i2c.
-  * **Continue holding for more than 5 seconds**: Directly turns off output.
+  * **Pression simple** : Active la sortie.
+  * **Maintenez pendant 2 secondes, jusqu'à ce que les deux LED de batterie du milieu s'allument, puis relâchez** : Envoie une demande d'arrêt via i2c.
+  * **Continuez à maintenir pendant plus de 5 secondes** : Éteint directement la sortie.
 
-8. :ref:`battery_indicators`: Indicates battery level and charging status.
-9. **I2C Connector**: SH1.0 4P terminal, compatible with **qwIIC** and **STEMMA QT**.
-10. **I2C Pin Headers**: 1x4P 2.54 pin headers.
-11. **Type A Output**: 5V output interface.
-12. **5V/GND Pin Headers**: 2 x 4P 2.54 pin headers.
-13. :ref:`pin_header`: Raspberry Pi pin headers, directly connects to the Raspberry Pi.
-14. :ref:`battery_connector`: XH2.54 3P battery connector.
-15. **Warning LEDs**: If the battery is reversed, two red LEDs light up, warning of battery reversal.
+8. :ref:`battery_indicators` : Indique le niveau de la batterie et l'état de la charge.
+9. **Connecteur I2C** : Connecteur SH1.0 4P, compatible avec **qwIIC** et **STEMMA QT**.
+10. **Broches I2C** : Broches 1x4P 2.54.
+11. **Sortie Type A** : Interface de sortie 5V.
+12. **Broches 5V/GND** : 2 x 4P 2.54 broches.
+13. :ref:`pin_header` : Broches du Raspberry Pi, se connecte directement au Raspberry Pi.
+14. :ref:`battery_connector` : Connecteur de batterie XH2.54 3P.
+15. **LEDs d'avertissement** : Si la batterie est inversée, deux LED rouges s'allument, avertissant de l'inversion de la batterie.
 
-Operating Steps
-------------------
+Étapes de fonctionnement
+--------------------------
 
-1. Charge the PiPower 3.
+1. Chargez le PiPower 3.
 
-Before using your PiPower 3, charge it fully. A full charge prevents battery issues and ensures optimal performance.
+Avant d'utiliser votre PiPower 3, chargez-le complètement. Une charge complète permet d'éviter des problèmes de batterie et garantit des performances optimales.
 
-For charging, use a 5V/3A PD charger, such as the official Raspberry Pi 27W power supply. This allows the PiPower 3 to deliver a maximum current of 3A. 
+Pour la charge, utilisez un chargeur PD 5V/3A, tel que l'alimentation officielle Raspberry Pi 27W. Cela permet au PiPower 3 de délivrer un courant maximal de 3A.
 
 .. image:: img/power_input.jpg
   :width: 500
   :align: center
 
-You'll see the indicator light blink during charging.
+L'indicateur clignotera pendant la charge.
 
 .. image:: img/battery_indicator.jpg
   :width: 500
   :align: center
 
-* **4 LEDs lit**: Battery >80%
-* **3 LEDs lit**: 60%< Battery <80%
-* **2 LEDs lit**: 40%< Battery <60%
-* **1 LED lit**: 20%< Battery <40%
-* **First LED flashing**: Battery <20%
-* **LEDs incrementally light up in a cycle**: Charging
-* **Middle two LEDs flashing**: Waiting for shutdown signal
-* **All LEDs off**: Unpowered or in sleep mode
+* **4 LED allumées** : Batterie >80%
+* **3 LED allumées** : 60% < Batterie < 80%
+* **2 LED allumées** : 40% < Batterie < 60%
+* **1 LED allumée** : 20% < Batterie < 40%
+* **Première LED clignotante** : Batterie < 20%
+* **Les LED s'allument progressivement dans un cycle** : En charge
+* **Les deux LED du milieu clignotent** : En attente du signal d'arrêt
+* **Toutes les LED éteintes** : Hors tension ou en mode veille
 
-2. Output power to the mainboard.
+2. Fournir de l'alimentation à la carte principale.
 
-If you're using a Raspberry Pi, no additional wiring is necessary.
+Si vous utilisez un Raspberry Pi, aucune connexion supplémentaire n'est nécessaire.
 
-For other mainboards, you can connect them to PiPower 3's Type A output port or use two jump wires.
+Pour d'autres cartes principales, vous pouvez les connecter au port de sortie Type A de PiPower 3 ou utiliser deux fils de connexion.
 
 .. image:: img/output_mainboard.jpg
     :width: 500
@@ -84,34 +84,34 @@ For other mainboards, you can connect them to PiPower 3's Type A output port or 
     :width: 400
     :align: center
 
-3. Press the power button once to power your mainboard. 
+3. Appuyez une fois sur le bouton d'alimentation pour alimenter votre carte principale.
 
-You will see the **PWR LED** light up, and your mainboard will receive power from PiPower 3.
+Vous verrez la **PWR LED** s'allumer, et votre carte principale recevra de l'alimentation de PiPower 3.
 
 .. image:: img/pwr_led.png
     :width: 500
     :align: center
 
 
-4. To turn off the power after use.
+4. Pour éteindre l'alimentation après utilisation.
 
-  * **Continue holding for more than 5 seconds**: Directly turns off the output.
-  * **Hold for 2 seconds, until the middle two battery LEDs light up then release**: If you have configured the :ref:`pipower_software`, this action sends a shutdown request via I2C for a safe shutdown.
+  * **Continuez à maintenir pendant plus de 5 secondes** : Éteint directement la sortie.
+  * **Maintenez pendant 2 secondes, jusqu'à ce que les deux LED de batterie du milieu s'allument, puis relâchez** : Si vous avez configuré le :ref:`pipower_software`, cette action envoie une demande d'arrêt via I2C pour un arrêt sécurisé.
 
 .. note::
 
-    When your Type C power cable is still plugged in, the battery indicator will continue to display the charging status until charging is complete.
+    Lorsque votre câble d'alimentation Type C est toujours branché, l'indicateur de batterie continuera d'afficher l'état de charge jusqu'à ce que la charge soit terminée.
 
 .. _pipower_software:
 
-Software Configuration
+Configuration logicielle
 ------------------------------------
 
-In addition to using the PiPower 3 directly, you can also utilize our provided library to monitor input and output voltages, current, battery voltage, percentage, power source, charging status, and other internal data such as shutdown requests.
+En plus d'utiliser le PiPower 3 directement, vous pouvez également utiliser notre bibliothèque fournie pour surveiller les tensions d'entrée et de sortie, le courant, la tension de la batterie, le pourcentage, la source d'alimentation, l'état de charge et d'autres données internes telles que les demandes d'arrêt.
 
-Please choose the appropriate tutorial based on your mainboard.
+Veuillez choisir le tutoriel approprié en fonction de votre carte principale.
 
-.. toctree::
+.. toctree:: 
     :maxdepth: 2
 
     use_with_rpi
