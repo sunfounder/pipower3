@@ -1,12 +1,11 @@
-Compatible SBCs
+SBCs Compatibles
 =========================
 
-PiPower 3 is compatible with various Single Board Computers (SBCs). It is fully compatible with the Raspberry Pi series in terms of structural installation, power supply, and software configuration.
+El PiPower 3 es compatible con diversas computadoras de placa única (SBC). Es completamente compatible con la serie Raspberry Pi en términos de instalación estructural, suministro de energía y configuración del software.
 
-Some SBCs can be powered by PiPower 3 but may not be structurally compatible or only partially compatible. For example, Zero-type boards can only be fixed using two mounting holes.
+Algunas SBCs pueden ser alimentadas por el PiPower 3, pero pueden no ser completamente compatibles desde el punto de vista estructural o solo parcialmente compatibles. Por ejemplo, las placas tipo Zero solo pueden fijarse utilizando dos agujeros de montaje.
 
-In terms of software configuration, we provide support for programming languages such as Python, MicroPython, and Arduino. You will need to choose the appropriate language based on your specific SBC.
-
+En cuanto a la configuración del software, proporcionamos soporte para lenguajes de programación como Python, MicroPython y Arduino. Deberás elegir el lenguaje adecuado según tu SBC específica.
 
 .. image:: img/pipower3_compatible_sbc.jpg
     :width: 800

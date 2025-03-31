@@ -1,41 +1,42 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi & Arduino & ESP32 en Facebook! Profundiza en Raspberry Pi, Arduino y ESP32 con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprender y compartir**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Vistas previas exclusivas**: Accede antes que nadie a nuevos anuncios de productos y avances.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más nuevos.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-Use with Raspberry Pi Pico and ESP32 Boards
+Uso con Placas Raspberry Pi Pico y ESP32
 ====================================================
-If you are using the PiPower 3 to power your Raspberry Pi Pico or ESP32 Board, you can connect the Raspberry Pi Pico or ESP32 Board to the PiPower 3's Type A output port or use two jump wires.
 
-Connect the board's I2C interface using a jumper. If no operation is required before powering off, directly connect the **SDSIG** jumper cap to the GND. If operations are necessary before shutdown, remove the jumper cap and connect the intermediate wire to an IO port on the Raspberry Pi Pico or ESP32 Board. This is used to notify PiPower 3 that it has completed shutdown and can power off.
+Si estás utilizando el PiPower 3 para alimentar tu placa Raspberry Pi Pico o ESP32, puedes conectar la placa Raspberry Pi Pico o ESP32 al puerto de salida Tipo A del PiPower 3 o usar dos cables de puente.
 
-We provide a library that allows you to monitor input and output voltages, battery voltage and percentage, power source, charging status, and other internal data.
+Conecta la interfaz I2C de la placa utilizando un puente. Si no se requieren operaciones antes de apagar, conecta directamente el capuchón de puente **SDSIG** a GND. Si es necesario realizar operaciones antes del apagado, retira el capuchón de puente y conecta el cable intermedio a un puerto IO en la Raspberry Pi Pico o placa ESP32. Esto se utiliza para notificar a PiPower 3 que ha completado el apagado y puede apagarse.
 
-#. Download the library from GitHub. You can quickly download it using the link below or visit: https://github.com/sunfounder/micropython_spc.
+Proporcionamos una biblioteca que te permite monitorear los voltajes de entrada y salida, el voltaje de la batería y su porcentaje, la fuente de alimentación, el estado de carga y otros datos internos.
+
+#. Descarga la biblioteca desde GitHub. Puedes descargarla rápidamente usando el siguiente enlace o visitar: https://github.com/sunfounder/micropython_spc.
 
     * :download:`micropython_spc <https://github.com/sunfounder/micropython_spc/archive/refs/heads/main.zip>`
 
-#. After downloading and unzipping, upload the ``spc`` folder to your Raspberry Pi Pico or ESP32 Board. Thonny is recommended for this purpose.
+#. Después de descargar y descomprimir, sube la carpeta ``spc`` a tu Raspberry Pi Pico o placa ESP32. Se recomienda usar Thonny para este propósito.
 
     .. image:: img/micropython_upload.png
         :align: center
 
-#. Once uploaded, you can run a few examples from the ``micropython_spc-main`` folder to see the effects:
+#. Una vez subida, puedes ejecutar algunos ejemplos de la carpeta ``micropython_spc-main`` para ver los efectos:
 
-    * ``example_pipower_3_read_all.py``: Use this example if you need to read all data at once and process them individually.
-    * ``example_pipower_3_read_individual.py``: If you only need to read certain data, this example provides individual data retrieval instructions.
-    * ``example_pipower_3_set_shutdown_percentage.py``: This example teaches how to set a shutdown battery percentage. This will send a shutdown signal to the host when the battery is not charging and falls below the set percentage. It will power off only after the host has shut down and received a power-off signal. Typically used with SBCs like Raspberry Pi. For microcontrollers, remove the **SDSIG** jumper cap and connect the intermediate wire to a pin. After safely shutting down upon receiving the shutdown signal, pull this pin high to power off PiPower 3.
-    * ``example_pipower_3_shutdown_when_request.py``: This example shows how to handle operations after receiving a shutdown signal. Remove the **SDSIG** jumper cap and connect the intermediate wire to a pin.
+    * ``example_pipower_3_read_all.py``: Usa este ejemplo si necesitas leer todos los datos a la vez y procesarlos individualmente.
+    * ``example_pipower_3_read_individual.py``: Si solo necesitas leer ciertos datos, este ejemplo proporciona instrucciones para recuperar datos individuales.
+    * ``example_pipower_3_set_shutdown_percentage.py``: Este ejemplo enseña cómo establecer un porcentaje de batería para apagado. Esto enviará una señal de apagado al host cuando la batería no se esté cargando y caiga por debajo del porcentaje configurado. El apagado solo ocurrirá después de que el host se haya apagado y haya recibido una señal de apagado. Típicamente usado con SBCs como Raspberry Pi. Para microcontroladores, retira el capuchón de puente **SDSIG** y conecta el cable intermedio a un pin. Después de apagarse de manera segura al recibir la señal de apagado, eleva este pin para apagar el PiPower 3.
+    * ``example_pipower_3_shutdown_when_request.py``: Este ejemplo muestra cómo manejar operaciones después de recibir una señal de apagado. Retira el capuchón de puente **SDSIG** y conecta el cable intermedio a un pin.
 
-Micropython Library API Documentation:
+Documentación de la API de la Biblioteca Micropython:
 
 https://github.com/sunfounder/micropython_spc?tab=readme-ov-file#api
